@@ -5,8 +5,12 @@ import { revalidateTag } from 'next/cache';
 import { ZodError } from 'zod';
 
 import { getToken } from '@/utils/server/functions/auth';
-import { getUserPosts, createPost } from '@/api/__generated/posts/posts';
-import type { PostResponse, PostResponce } from '@/api/__generated/index.schemas';
+import {
+  getUserPosts, createPost 
+} from '@/api/__generated/posts/posts';
+import type {
+  PostResponse, PostResponce 
+} from '@/api/__generated/index.schemas';
 
 import { routes } from 'src/navigation';
 
@@ -20,7 +24,7 @@ export async function getAuthorPosts(authorId: any, options?: any) {
   try {
     const token = await JSON.parse((await getToken()) ?? '{}')?.accessToken;
 
-    const posts: PostResponse[] = (
+    const posts: PostResponse[] | any = (
       await getUserPosts(String(authorId), {
         headers: {
           // ...(await headers()),

@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   keywords: ['Next.js', 'React', 'JavaScript'],
   creator: 'Maela Cudini',
   metadataBase: new URL('https://addwebsite.com'),
-  manifest: 'https://nextjs.org/manifest.json',
+  manifest: '/manifest.json',
   formatDetection: {
     email: false,
     address: false,

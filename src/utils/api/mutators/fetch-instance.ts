@@ -11,7 +11,5 @@ type Options = {
 };
 
 export const customInstance = async <T>(url, { ...options }: Options): Promise<T> => {
-  return (await fetchApi(url, {
-    ...options,
-  })) as T;
+  return (await fetchApi(url, { ...options })) as T;
 };

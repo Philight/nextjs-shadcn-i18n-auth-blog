@@ -5,7 +5,7 @@ import AuthorPosts from '@/organisms/AuthorPosts';
 // ===============================================================
 
 // Force static generation
-export const dynamic = 'force-static';
+// export const dynamic = 'force-static';
 
 // invalidate every hour
 // export const revalidate = 3600;

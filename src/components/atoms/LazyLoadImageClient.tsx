@@ -26,13 +26,12 @@ export interface LazyLoadImagePropsType extends Omit<IGenericProps, 'style'>, Im
 export default function LazyLoadImageClient({ className, src, alt, blurDataURL, withOverlay, ...rest }: LazyLoadImagePropsType) {
   const [base64, setBase64] = useState(BASE64_PLACEHOLDER);
 
-  // const base64 = await generateBlurDataURL(src);
   useEffect(() => {
     (async () => {
       const _base64 = await generateBlurDataURL(src);
       setBase64(_base64);
     })();
-  });
+  }, [src]);
 
   return (
     <div className={cn('LazyLoadImage__c', className)}>
@@ -42,7 +41,7 @@ export default function LazyLoadImageClient({ className, src, alt, blurDataURL, 
         alt={alt}
         loading="lazy"
         placeholder="blur"
-        blurDataURL={BASE64_PLACEHOLDER}
+        blurDataURL={base64}
         {...rest}
         // style={{ height: '100%' }} // optional
       />

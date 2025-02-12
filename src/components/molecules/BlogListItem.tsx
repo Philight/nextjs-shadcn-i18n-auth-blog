@@ -35,7 +35,8 @@ import type { IGenericProps } from '@/types/generic-types';
 
 // ============================================================================
 
-const NO_IMAGE = '/assets/images/no_image.jpg';
+// const NO_IMAGE = '/assets/images/no_image.jpg';
+const NO_IMAGE = 'https://picsum.photos/600/500.webp';
 
 // ============================================================================
 
