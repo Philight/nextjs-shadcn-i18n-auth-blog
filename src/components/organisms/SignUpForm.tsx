@@ -117,8 +117,8 @@ export default function SignUpForm({ className }: Props) {
             <Field field="input" name="email" type="text" label={t('email')} />
             <Field field="input" name="firstname" type="text" label={t('firstname')} />
             <Field field="input" name="lastname" type="text" label={t('lastname')} />
-            <Field field="input" name="password" type="text" label={t('password')} />
-            <Field field="input" name="password_confirm" type="text" label={t('password_confirm')} />
+            <Field field="input" name="password" type="password" label={t('password')} />
+            <Field field="input" name="password_confirm" type="password" label={t('password_confirm')} />
           </div>
 
           <div className={'button__wrapper'}>

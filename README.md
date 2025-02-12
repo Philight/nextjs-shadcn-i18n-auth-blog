@@ -1,4 +1,6 @@
-# TODO
+# Next.js app
+
+> FE: React + TypeScript + ShadcnUI, TailwindCSS
 
 ## Points
 
@@ -6,19 +8,19 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
-1. Set ENV variables
-
-```bash
-cp .env.example .env
-```
-
--> set `NEXT_PUBLIC_API_TOKEN`
-
-2. Install packages
+1. Install packages
 
 ```bash
 npm i
 ```
+
+2. Set ENV variables
+
+```bash
+npm run generate:env
+```
+
+-> set `NEXT_PUBLIC_BACKEND_URL`
 
 3. Run the development server:
 
@@ -36,7 +38,32 @@ bun dev
 
 #
 
-#
+## 🧰 BUILT WITH
+
+### ⛰️ FRONTEND
+
+- [Next.js](https://nextjs.org)
+- [Typescript](https://www.typescriptlang.org/)
+- [Tailwind CSS](https://tailwindcss.com)
+- [ShadCN UI](https://ui.shadcn.com/)
+- [Framer Motion](https://www.framer.com/)
+- [Zustand](https://zustand.docs.pmnd.rs/)
+
+### 💠 Utilities:
+
+- [@plaiceholder/next](https://plaiceholder.co/)
+- [next-intl](https://next-intl.dev/)
+- [React Tracked](https://react-tracked.js.org/)
+- [Zod](https://zod.dev/)
+- [React Hook Form](https://react-hook-form.com/)
+- [Orval](https://orval.dev/)
+- [Fakerjs](https://fakerjs.dev/)
+- [MSW](https://mswjs.io/)
+- [PostCSS](https://postcss.org/)
+- [ESLint](https://eslint.org/)
+- [Prettier](https://prettier.io/)
+
+## Next.js
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 

@@ -121,7 +121,7 @@ export default function SignInForm({ className }: SignInFormProps) {
           {/*<CardTitle className="sign-in-form__title">{t('title')}</CardTitle>*/}
           <div className={'grid grid-cols-1'}>
             <Field field="input" name="email" type="text" label={t('email')} />
-            <Field field="input" name="password" type="text" label={t('password')} />
+            <Field field="input" name="password" type="password" label={t('password')} />
           </div>
 
           <div className={'button__wrapper'}>
