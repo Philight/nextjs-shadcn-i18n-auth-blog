@@ -6,12 +6,8 @@
  * OpenAPI spec version: 1.0
  */
 import { faker } from '@faker-js/faker';
-import {
-  HttpResponse, delay, http 
-} from 'msw';
-import type {
-  Auth, RefreshResponceModel 
-} from '../index.schemas';
+import { HttpResponse, delay, http } from 'msw';
+import type { Auth, RefreshResponceModel } from '../index.schemas';
 
 export const getSignUpResponseMock = (overrideResponse: Partial<Auth> = {}): Auth => ({
   accessToken: faker.string.alpha(20),

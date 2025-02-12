@@ -5,10 +5,8 @@
  * Test Task BE
  * OpenAPI spec version: 1.0
  */
-import type {
-  CreatePostInput, PostResponce, PostResponse 
-} from '../index.schemas';
-import { getBaseUrlBasedOnServer } from '@/utils/functions';
+import type { CreatePostInput, PostResponce, PostResponse } from '../index.schemas';
+import { customInstance } from '../../mutators/fetch-instance';
 
 /**
  * @summary Create a new post
@@ -20,23 +18,16 @@ export type createPostResponse = {
 };
 
 export const getCreatePostUrl = () => {
-  const baseUrl = getBaseUrlBasedOnServer();
-  return `${baseUrl}/posts`;
+  return `/posts`;
 };
 
 export const createPost = async (createPostInput: CreatePostInput, options?: RequestInit): Promise<createPostResponse> => {
-  console.log('!!API createPost createPostInput', createPostInput);
-  const res = await fetch(getCreatePostUrl(), {
+  return customInstance<createPostResponse>(getCreatePostUrl(), {
+    ...options,
     method: 'POST',
     headers: { 'Content-Type': 'application/json', ...options?.headers },
     body: JSON.stringify(createPostInput),
-    ...options,
   });
-
-  const body = [204, 205, 304].includes(res.status) ? null : await res.text();
-  const data: createPostResponse['data'] = body ? JSON.parse(body) : {};
-
-  return { data, status: res.status, headers: res.headers } as createPostResponse;
 };
 
 /**
@@ -49,20 +40,14 @@ export type getPostsResponse = {
 };
 
 export const getGetPostsUrl = () => {
-  const baseUrl = getBaseUrlBasedOnServer();
-  return `${baseUrl}/posts`;
+  return `/posts`;
 };
 
 export const getPosts = async (options?: RequestInit): Promise<getPostsResponse> => {
-  const res = await fetch(getGetPostsUrl(), {
-    method: 'GET',
+  return customInstance<getPostsResponse>(getGetPostsUrl(), {
     ...options,
+    method: 'GET',
   });
-
-  const body = [204, 205, 304].includes(res.status) ? null : await res.text();
-  const data: getPostsResponse['data'] = body ? JSON.parse(body) : {};
-
-  return { data, status: res.status, headers: res.headers } as getPostsResponse;
 };
 
 /**
@@ -75,20 +60,14 @@ export type getUserPostsResponse = {
 };
 
 export const getGetUserPostsUrl = (userId: string) => {
-  const baseUrl = getBaseUrlBasedOnServer();
-  return `${baseUrl}/posts/user/${userId}`;
+  return `/posts/user/${userId}`;
 };
 
 export const getUserPosts = async (userId: string, options?: RequestInit): Promise<getUserPostsResponse> => {
-  const res = await fetch(getGetUserPostsUrl(userId), {
-    method: 'GET',
+  return customInstance<getUserPostsResponse>(getGetUserPostsUrl(userId), {
     ...options,
+    method: 'GET',
   });
-
-  const body = [204, 205, 304].includes(res.status) ? null : await res.text();
-  const data: getUserPostsResponse['data'] = body ? JSON.parse(body) : {};
-
-  return { data, status: res.status, headers: res.headers } as getUserPostsResponse;
 };
 
 /**
@@ -101,18 +80,12 @@ export type getPostResponse = {
 };
 
 export const getGetPostUrl = (postId: string) => {
-  const baseUrl = getBaseUrlBasedOnServer();
-  return `${baseUrl}/posts/${postId}`;
+  return `/posts/${postId}`;
 };
 
 export const getPost = async (postId: string, options?: RequestInit): Promise<getPostResponse> => {
-  const res = await fetch(getGetPostUrl(postId), {
-    method: 'GET',
+  return customInstance<getPostResponse>(getGetPostUrl(postId), {
     ...options,
+    method: 'GET',
   });
-
-  const body = [204, 205, 304].includes(res.status) ? null : await res.text();
-  const data: getPostResponse['data'] = body ? JSON.parse(body) : {};
-
-  return { data, status: res.status, headers: res.headers } as getPostResponse;
 };

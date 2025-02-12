@@ -1,15 +1,15 @@
 // import { headers } from 'next/headers';
-import { twMerge } from 'tailwind-merge';
+import axios from 'axios';
+import {
+  Options, serialize 
+} from 'object-to-formdata';
 
+import { twMerge } from 'tailwind-merge';
 import {
   type ClassValue, clsx 
 } from 'clsx';
 
 export { cva } from 'class-variance-authority';
-import axios from 'axios';
-import {
-  Options, serialize 
-} from 'object-to-formdata';
 
 import { IS_DEVELOPMENT } from './constants';
 
@@ -41,20 +41,35 @@ export const handleServerError = (error: Error | any) => {
 
 // ================================================
 
+export type HTTPResponse = {
+  data: any;
+  status: number;
+  headers: Headers;
+};
+
+const addBaseToUrl = (url: string, addBase?: boolean | string) => {
+  const baseUrl = typeof addBase === 'string' ? addBase : getBaseUrlBasedOnServer();
+  return `${baseUrl}${url}`;
+};
+
 export async function fetchApi(urlOrPath: URL | string, options?: any) {
-  const { method = 'GET', body, headers, ...fetchOptions } = options;
-  const { 'Content-Type': contentType } = headers;
+  const { method = 'GET', body, headers, addBase = true, params, ...fetchOptions } = options ?? {};
+  const { 'Content-Type': contentType } = headers ?? {};
 
-  const baseUrl = getBaseUrlBasedOnServer();
+  // URLs are rewritten in 'next.config' / 'middleware'
+  let targetUrl =
+    urlOrPath instanceof URL ? urlOrPath.toString() : isValidUrl(urlOrPath) ? urlOrPath : `${addBase ? addBaseToUrl(urlOrPath, addBase) : urlOrPath}`;
 
-  // External URLs are rewritten in 'next.config' / 'middleware'
-  const url = urlOrPath instanceof URL ? urlOrPath.toString() : isValidUrl(urlOrPath) ? new URL(urlOrPath) : `${urlOrPath}`;
+  // Query
+  if (params) {
+    targetUrl += '?' + new URLSearchParams(params);
+  }
 
+  // Body
   const transformedBody = await (contentType === 'multipart/form-data' ? serializeJsonToFormData({ token, ...body }) : JSON.stringify({ token, ...body }));
-
   const includeBody = method !== 'GET' ? { body: transformedBody } : {};
 
-  const res = await fetch(url, {
+  const res = await fetch(targetUrl, {
     method,
     headers: {
       ...DEFAULT_HEADERS,
@@ -63,12 +78,14 @@ export async function fetchApi(urlOrPath: URL | string, options?: any) {
     },
     ...includeBody,
     credentials: 'include',
-    // next: { tags: ['getPost'] },
-    // cache: 'no-store',
     ...fetchOptions,
   });
 
-  return await res.json();
+  const resBody = [204, 205, 304].includes(res.status) ? null : await res.text();
+  const data: HTTPResponse['data'] = resBody ? JSON.parse(resBody) : {};
+
+  // return await res.json();
+  return { data, status: res.status, headers: res.headers };
 }
 
 // ================================================

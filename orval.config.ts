@@ -33,10 +33,11 @@ export default defineConfig({
        * OVERRIDE
        **/
       override: {
-        // mutator: {
-        //   path: 'src/api/mutators/axios-instance.ts',
-        //   name: 'customInstance',
-        // },
+        mutator: {
+          //   path: 'src/utils/api/mutators/axios-instance.ts',
+          path: 'src/utils/api/mutators/fetch-instance.ts',
+          name: 'customInstance',
+        },
         useNativeEnums: true,
       },
     },

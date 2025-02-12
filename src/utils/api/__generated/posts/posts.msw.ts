@@ -6,12 +6,8 @@
  * OpenAPI spec version: 1.0
  */
 import { faker } from '@faker-js/faker';
-import {
-  HttpResponse, delay, http 
-} from 'msw';
-import type {
-  PostResponce, PostResponse 
-} from '../index.schemas';
+import { HttpResponse, delay, http } from 'msw';
+import type { PostResponce, PostResponse } from '../index.schemas';
 
 export const getCreatePostResponseMock = (overrideResponse: Partial<PostResponce> = {}): PostResponce => ({
   title: faker.string.alpha(20),

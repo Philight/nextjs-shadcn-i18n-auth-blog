@@ -5,10 +5,8 @@
  * Test Task BE
  * OpenAPI spec version: 1.0
  */
-import type {
-  Auth, LoginInput, RefreshResponceModel, RefreshTokenInput, SignupInput 
-} from '../index.schemas';
-import { getBaseUrlBasedOnServer } from '@/utils/functions';
+import type { Auth, LoginInput, RefreshResponceModel, RefreshTokenInput, SignupInput } from '../index.schemas';
+import { customInstance } from '../../mutators/fetch-instance';
 
 /**
  * @summary Signup a new user
@@ -20,22 +18,16 @@ export type signUpResponse = {
 };
 
 export const getSignUpUrl = () => {
-  const baseUrl = getBaseUrlBasedOnServer();
-  return `${baseUrl}/auth/signup`;
+  return `/auth/signup`;
 };
 
 export const signUp = async (signupInput: SignupInput, options?: RequestInit): Promise<signUpResponse> => {
-  const res = await fetch(getSignUpUrl(), {
+  return customInstance<signUpResponse>(getSignUpUrl(), {
+    ...options,
     method: 'POST',
     headers: { 'Content-Type': 'application/json', ...options?.headers },
     body: JSON.stringify(signupInput),
-    ...options,
   });
-
-  const body = [204, 205, 304].includes(res.status) ? null : await res.text();
-  const data: signUpResponse['data'] = body ? JSON.parse(body) : {};
-
-  return { data, status: res.status, headers: res.headers } as signUpResponse;
 };
 
 /**
@@ -48,22 +40,16 @@ export type signInResponse = {
 };
 
 export const getSignInUrl = () => {
-  const baseUrl = getBaseUrlBasedOnServer();
-  return `${baseUrl}/auth/login`;
+  return `/auth/login`;
 };
 
 export const signIn = async (loginInput: LoginInput, options?: RequestInit): Promise<signInResponse> => {
-  const res = await fetch(getSignInUrl(), {
+  return customInstance<signInResponse>(getSignInUrl(), {
+    ...options,
     method: 'POST',
     headers: { 'Content-Type': 'application/json', ...options?.headers },
     body: JSON.stringify(loginInput),
-    ...options,
   });
-
-  const body = [204, 205, 304].includes(res.status) ? null : await res.text();
-  const data: signInResponse['data'] = body ? JSON.parse(body) : {};
-
-  return { data, status: res.status, headers: res.headers } as signInResponse;
 };
 
 /**
@@ -76,20 +62,14 @@ export type refreshTokenResponse = {
 };
 
 export const getRefreshTokenUrl = () => {
-  const baseUrl = getBaseUrlBasedOnServer();
-  return `${baseUrl}/auth/refresh-token`;
+  return `/auth/refresh-token`;
 };
 
 export const refreshToken = async (refreshTokenInput: RefreshTokenInput, options?: RequestInit): Promise<refreshTokenResponse> => {
-  const res = await fetch(getRefreshTokenUrl(), {
+  return customInstance<refreshTokenResponse>(getRefreshTokenUrl(), {
+    ...options,
     method: 'POST',
     headers: { 'Content-Type': 'application/json', ...options?.headers },
     body: JSON.stringify(refreshTokenInput),
-    ...options,
   });
-
-  const body = [204, 205, 304].includes(res.status) ? null : await res.text();
-  const data: refreshTokenResponse['data'] = body ? JSON.parse(body) : {};
-
-  return { data, status: res.status, headers: res.headers } as refreshTokenResponse;
 };
