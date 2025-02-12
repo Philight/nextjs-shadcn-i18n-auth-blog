@@ -1,4 +1,6 @@
-import { DetailedHTMLProps, HTMLAttributes, ReactNode } from 'react';
+import {
+  DetailedHTMLProps, HTMLAttributes, ReactNode 
+} from 'react';
 
 import Header from '@/organisms/Header';
 import { Footer } from '@/organisms/Footer';

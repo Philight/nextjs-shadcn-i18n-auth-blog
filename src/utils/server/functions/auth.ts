@@ -3,7 +3,9 @@
 import bcrypt from 'bcryptjs';
 
 import { cookies } from 'next/headers';
-import { getCookie, setCookie } from 'cookies-next/server';
+import {
+  getCookie, setCookie 
+} from 'cookies-next/server';
 
 import { TOKEN_COOKIE_NAME } from '@/utils/constants';
 

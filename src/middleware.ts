@@ -1,5 +1,7 @@
 export { default } from 'next-auth/middleware';
-import { NextResponse, NextRequest } from 'next/server';
+import {
+  NextResponse, NextRequest 
+} from 'next/server';
 
 import { routes } from './navigation';
 import { TOKEN_COOKIE_NAME } from '@/utils/constants';

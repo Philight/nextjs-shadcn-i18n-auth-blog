@@ -1,6 +1,10 @@
 // Fetching data on the server with the fetch API: https://nextjs.org/docs/app/building-your-application/data-fetching/fetching#fetching-data-on-the-server-with-the-fetch-api
-import { handleServerError, fetchApi, axiosApi } from '../functions';
-import { PostType, CreatePostParams } from './types';
+import {
+  handleServerError, fetchApi, axiosApi 
+} from '../functions';
+import {
+  PostType, CreatePostParams 
+} from './types';
 
 // ================================================
 

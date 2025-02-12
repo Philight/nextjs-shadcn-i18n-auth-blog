@@ -1,6 +1,7 @@
-import Axios, { AxiosRequestConfig } from 'axios';
+// eslint-disable-next-line import/no-named-as-default
+import Axios, { type AxiosRequestConfig } from 'axios';
 // import auth from '@firebase/auth';
-import qs from 'qs';
+// import qs from 'qs';
 
 export const AXIOS_INSTANCE = Axios.create({ baseURL: process.env.BASE_API_URL });
 
@@ -19,7 +20,7 @@ export const customInstance = async <T>(config: AxiosRequestConfig, options?: Ax
     },
     withCredentials: true,
     paramsSerializer: (params) => {
-      return qs.stringify(params, { arrayFormat: 'repeat' });
+      // return qs.stringify(params, { arrayFormat: 'repeat' });
     },
   })
     .then((res) => res.data)

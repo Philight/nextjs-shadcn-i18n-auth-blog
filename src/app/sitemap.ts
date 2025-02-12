@@ -1,15 +1,25 @@
-import { getUsersWithPaginationAndFilter } from '@/utils/api/usersApi';
 import type { MetadataRoute } from 'next';
 
+import { getPosts } from '@/api/__generated/posts/posts';
+import type { PostResponse } from '@/utils/api/__generated/index.schemas';
+import { fDate } from '@/utils/date';
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const usersAndPagination = await getUsersWithPaginationAndFilter();
+  const posts: PostResponse[] =
+    (
+      await getPosts({
+        next: { tags: [`getPosts`] },
+        cache: 'force-cache',
+      })
+    ).data ?? [];
+
   // @ts-ignore
-  const usersURL: MetadataRoute.Sitemap = usersAndPagination.users.map((user) => {
+  const blogPosts: MetadataRoute.Sitemap = posts.map((p) => {
+    const { title, content, published, createdAt, updatedAt } = p;
     return {
-      url: `https://addwebsite.com/${user}`,
-      lastModified: new Date(),
-      changeFrequency: 'daily',
-      priority: 0.8,
+      title,
+      content,
+      lastModified: fDate(new Date(updatedAt || createdAt)),
     };
   });
 
@@ -38,6 +48,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'yearly',
       priority: 0.9,
     },
-    ...usersURL,
+    ...blogPosts,
   ];
 }

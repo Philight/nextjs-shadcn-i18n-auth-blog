@@ -32,7 +32,6 @@ export default function AuthorPosts({ id }: Props) {
       }
     };
     fetchPosts();
-     
   }, [id]);
 
   if (!authorPosts) {

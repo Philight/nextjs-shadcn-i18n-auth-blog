@@ -1,6 +1,8 @@
 // import create from 'zustand';
 import { createStore } from 'zustand/vanilla';
-import { persist, createJSONStorage } from 'zustand/middleware';
+import {
+  persist, createJSONStorage 
+} from 'zustand/middleware';
 
 // import { UserType } from '@/store';
 import { Tokens } from '@/utils/server/functions/auth';
