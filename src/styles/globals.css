@@ -1,0 +1,50 @@
+/* TAILWIND */
+@import './tailwind.css';
+
+/* EXTERNAL */
+/*<link rel='stylesheet' href='nprogress.css'/>*/
+@import 'nprogress/nprogress.css';
+
+/* --- Layer: Base --- */
+
+/* 1. Settings */
+@import './1-settings/global.css';
+@import './1-settings/variables.css';
+/*@import './1-settings/external';*/
+
+/* 2. Design Tokens */
+/*@import './2-design-tokens/colors.css';*/
+@import './2-design-tokens/fonts.css';
+@import './2-design-tokens/theme.css';
+
+/* 3. Generic */
+@import './3-normalize/normalize.css';
+@import './3-normalize/my-normalize.css';
+@import './3-normalize/print.css';
+
+/* 4. Tools */
+@import './4-tools/aspect-ratio.css';
+@import './4-tools/accessibility.css';
+@import './4-tools/clearfix.css';
+/*@import '4-tools/mixins.css';*/
+@import './4-tools/tailwind-utilities.css';
+
+/* --- Layer: Components --- */
+
+/* 5. Layout */
+@import './5-layouts/general';
+
+/* 6. Components */
+@import './6-components/atoms.css';
+@import './6-components/molecules.css';
+@import './6-components/organisms.css';
+
+/* --- Layer: Utilities --- */
+
+/* 6. Customisations */
+@import './7-customisations/components.css';
+@import './7-customisations/pages.css';
+@import './7-customisations/plugins.css';
+
+/* SHADCN */
+@import './shadcn.css';

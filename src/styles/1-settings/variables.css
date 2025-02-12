@@ -1,0 +1,110 @@
+/* Very basic support for a dark color scheme */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-mode: 'dark';
+  }
+
+  :root:not([data-user-color-scheme]) {
+    --backgroundColor: #1a1a1a;
+    --textColor: #eeeeee;
+    --primaryColor: #a15cff;
+  }
+}
+
+@layer base {
+  :root {
+    /** 
+     * TYPOGRAPHY 
+     */
+
+    --font-serif: 'Georgia', 'Baskerville', 'Palatino', 'Times New Roman', serif;
+    --font-sans-serif: 'Garamond', 'Gill Sans', 'Tahoma', 'Helvetica', 'Verdana', 'Arial', sans-serif;
+    --font-mono: 'Andalé Mono', 'Lucida', 'Monaco', 'Consolas', 'Courier', monospace;
+    --font-cursive: 'Bradley Hand', 'Brush Script MT', 'Comic Sans MS', cursive;
+    --font-fantasy: 'Luminari', fantasy;
+
+    --font-space-mono: 'Space Mono';
+    --font-lora: 'Lora';
+
+    --font-family-heading: var(--font-lora), var(--font-sans-serif);
+    --font-family-subheading: var(--font-lora), var(--font-serif);
+    --font-family-body: var(--font-lora), var(--font-sans-serif);
+    --font-family-btn: var(--font-lora), var(--font-sans-serif);
+    --font-family-highlight: var(--font-lora), var(--font-sans-serif);
+
+    /** 
+     * COLOR 
+     */
+
+    /* BASE */
+
+    --color-red: rgb(255 0 0);
+    --color-green: rgb(0 255 0);
+    --color-blue: rgb(0 0 255);
+    --color-white: rgb(255 255 255);
+    --color-black: rgb(0 0 0);
+    --color-gray: rgb(197 197 197);
+    --color-gray-light: rgb(241 241 241);
+    --color-gray-dark: rgb(159 159 159);
+    --color-gray-darker: rgb(106 106 106);
+
+    /* PALETTE */
+
+    --color-black-background: rgb(52, 58, 64);
+    --color-black-content: rgb(73, 80, 87);
+    --color-gray-content: rgb(108, 117, 125);
+
+    --color-snow: rgb(209 239 255);
+    --color-blue-highlight: rgb(39 84 122);
+    --color-blue-sky: rgb(0 143 255);
+    --color-red-sky: #ff0000;
+
+    /* PRIMARY */
+
+    --color-white-primary: rgb(255 255 255);
+    --color-black-primary: var(--color-black-background);
+    --color-blue-primary: rgb(0 60 86);
+    --color-red-primary: rgb(255 50 50);
+
+    --color-tertiary: var(--color-hermes-orange);
+
+    /** 
+     * LAYOUT 
+     */
+
+    --max-width: 1440px;
+    --gutter-outer-x: 24px;
+    --gutter-outer-y: 40px;
+
+    --header-height: 64px;
+    --announcement-height: 48px;
+    --footer-height: 80px;
+
+    /**
+     * --gutter-section: 16px;
+     */
+
+    @media screen(tab-sm) {
+      --header-height: 64px;
+    }
+    @media screen(desk-sm) {
+      --gutter-outer-x: 40px;
+      --gutter-outer-y: 40px;
+      --header-height: 80px;
+    }
+    @media screen(desk-lg) {
+      --gutter-outer-x: 64px;
+      --gutter-outer-y: 64px;
+    }
+
+    /** 
+     * RESPONSIVE 
+     */
+
+    --bp-mobile: 480px;
+    --tw-bp-mobile: 'mob-lg';
+    --bp-tablet: none;
+    --tw-bp-desktop: 'desk-sm';
+  }
+}

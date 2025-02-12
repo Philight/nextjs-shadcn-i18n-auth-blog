@@ -1,0 +1,447 @@
+/** 
+ * UTILITIES 
+ *
+ * use in JSX/TSX
+ *
+ */
+
+@layer base {
+  /**
+  * LAYOUT 
+  */
+
+  .gutter-outer-x {
+    @apply px-gutter-outer-x;
+  }
+
+  .gutter-outer-y {
+    @apply py-gutter-outer-y;
+  }
+
+  .page-max-w {
+    @apply gutter-outer-x mx-auto max-w-default;
+  }
+
+  /**
+  * RESPONSIVE 
+  */
+
+  .show-mobile {
+    /*    @apply max-mob-lg:hidden;*/
+    &:not(.show-tablet, .show-desktop) {
+      @media screen(mob-lg) {
+        @apply hidden;
+      }
+    }
+  }
+
+  .show-tablet {
+    &:not(.show-mobile) {
+      @media screen and screen(max-mob-lg) {
+        @apply hidden;
+      }
+    }
+
+    &:not(.show-desktop) {
+      @media screen and screen(desk-sm) {
+        @apply hidden;
+      }
+    }
+  }
+
+  .show-desktop {
+    &:not(.show-mobile, .show-tablet) {
+      @media screen and screen(max-desk-sm) {
+        @apply hidden;
+      }
+    }
+  }
+
+  .show-mobile:not(.show-tablet) {
+    @media screen(mob-lg) and screen(max-desk-sm) {
+      @apply hidden;
+    }
+  }
+
+  .hide-mobile {
+    /*    @apply hidden;
+    @media screen and (min: calc(theme(screens.desk-sm.min) - 1px)) {
+      @apply block;
+    }*/
+  }
+
+  /**
+  * POSITION 
+  */
+
+  .full-screen {
+    @apply h-screen w-screen;
+  }
+
+  .fill-parent {
+    @apply h-full w-full;
+  }
+
+  .full-bleed {
+    @apply ml-[calc(50%-50vw)] w-screen;
+  }
+
+  /**
+  * ABSOLUTE 
+  */
+
+  .abs-fill-parent {
+    @apply absolute left-0 top-0;
+    @apply fill-parent;
+  }
+
+  .abs-fill {
+    @apply absolute inset-0;
+  }
+
+  .abs-center {
+    @apply absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2;
+  }
+
+  .abs-center-x {
+    @apply absolute left-1/2 -translate-x-1/2;
+  }
+
+  .abs-center-y {
+    @apply absolute top-1/2 -translate-y-1/2;
+  }
+
+  /**
+  * UTIL 
+  */
+
+  .action {
+    @apply cursor-pointer;
+  }
+
+  .contains-link {
+    @apply relative;
+  }
+
+  .text-newline {
+    @apply whitespace-pre-line;
+  }
+
+  .text-nowrap {
+    @apply whitespace-nowrap;
+  }
+
+  /* FLEX & GRID */
+
+  .f-col {
+    @apply flex flex-col;
+  }
+
+  .f-center {
+    @apply flex items-center justify-center;
+  }
+
+  .f-center-x {
+    @apply flex justify-center;
+  }
+
+  .f-center-y {
+    @apply flex items-center;
+  }
+
+  .f-full {
+    @apply shrink-0 grow-0 basis-full;
+  }
+
+  .carousel-view {
+    @apply relative flex items-center overflow-hidden;
+  }
+
+  .carousel-slider {
+    @apply flex flex-nowrap items-center;
+    @apply w-full;
+    transition: transform 0.5s ease-out;
+    will-change: transform;
+  }
+  /*
+.carousel-item,
+*/
+  .carousel-group {
+    transition: transform 0.5s ease-out;
+    will-change: transform;
+  }
+  /*
+.carousel-group {
+  @apply f-full;
+  @apply w-full;
+}
+.carousel-item {
+  @apply f-full xl:basis-1/4;
+}
+*/
+
+  .carousel-nav {
+    @apply absolute cursor-pointer;
+    &.left {
+      @apply left-0;
+    }
+    &.right {
+      @apply right-0;
+    }
+  }
+
+  /**
+   * FLEX GRID
+   * f-grid .rows .cols .equal-size
+   * f-grid-group
+   * f-grid-row
+   * f-grid-item
+   */
+
+  .f-grid {
+    --f-grid-gap: theme(space.2); /* gap-2 */
+
+    .f-grid-group {
+      @apply f-full flex h-full flex-wrap;
+    }
+
+    .f-grid-row {
+      @apply f-full flex;
+    }
+
+    .f-grid-item {
+      @apply shrink-0 grow-0;
+      @apply pr-[var(--f-grid-gap)];
+    }
+    &.cols-1 .f-grid-item {
+      @apply basis-[calc((100%+var(--f-grid-gap))/1)];
+    }
+    &.cols-2 .f-grid-item {
+      @apply basis-[calc((100%+var(--f-grid-gap))/2)];
+    }
+    &.cols-3 .f-grid-item {
+      @apply basis-[calc((100%+var(--f-grid-gap))/3)];
+    }
+    &.cols-4 .f-grid-item {
+      @apply basis-[calc((100%+var(--f-grid-gap))/4)];
+    }
+
+    &:not(.rows-1) {
+      .f-grid-row:nth-child(n + 2) .f-grid-item {
+        @apply pt-[var(--f-grid-gap)];
+      }
+
+      &.equal-size {
+        &.rows-2 .f-grid-row {
+          @apply h-[calc((100%+var(--f-grid-gap))/2)];
+        }
+        &.rows-3 .f-grid-row {
+          @apply h-[calc((100%+var(--f-grid-gap))/3)];
+        }
+        &.rows-4 .f-grid-row {
+          @apply h-[calc((100%+var(--f-grid-gap))/4)];
+        }
+      }
+    }
+  }
+
+  /**
+   * MASONRY GRID
+   */
+
+  .masonry-grid {
+    --grid-gap: theme(space.2); /* gap-2 */
+
+    @apply grid grid-flow-dense;
+    @apply gap-[var(--grid-gap)];
+    .masonry-grid-item {
+      @apply flex h-full;
+    }
+
+    /**
+     * 12R x 16C GRID: 12 elements
+     */
+    &.cols-2 {
+      @apply grid-cols-16 grid-rows-12;
+
+      .masonry-grid-item {
+        &:nth-child(12n + 1) {
+          @apply col-span-16 row-span-1;
+        } /* 1 ROWS */
+
+        &:nth-child(12n + 2) {
+          @apply col-span-8 row-span-3;
+        } /* 3 ROWS */
+        &:nth-child(12n + 3) {
+          @apply col-span-8 row-span-2;
+        }
+        &:nth-child(12n + 4) {
+          @apply col-span-8 row-span-1;
+        }
+
+        &:nth-child(12n + 5) {
+          @apply col-span-7 row-span-3;
+        } /* 5 ROWS */
+        &:nth-child(12n + 6) {
+          @apply col-span-9 row-span-2;
+        }
+        &:nth-child(12n + 7) {
+          @apply col-span-9 row-span-3;
+        }
+        &:nth-child(12n + 8) {
+          @apply col-span-7 row-span-1;
+        }
+        &:nth-child(12n + 9) {
+          @apply col-span-7 row-span-1;
+        }
+
+        &:nth-child(12n + 10) {
+          @apply col-span-16 row-span-2;
+        } /* 2 ROWS */
+
+        &:nth-child(12n + 11) {
+          @apply col-span-8 row-span-1;
+        } /* 1 ROW */
+        &:nth-child(12n + 12) {
+          @apply col-span-8 row-span-1;
+        }
+      }
+    }
+
+    /**
+     * 24R x 24C GRID: 12 elements
+     */
+    &.cols-3 {
+      @apply grid-cols-24 grid-rows-24;
+
+      .masonry-grid-item {
+        /* 1 ROWS */
+        /*      &:nth-child(12n + 1) {
+          @apply col-span-24 row-span-4;
+        }*/
+        /* 4 ROWS */
+        /* &:nth-child(12n + 2) {
+          @apply col-span-8 row-span-4;
+        }
+        &:nth-child(12n + 3) {
+          @apply col-span-10 row-span-4;
+        }
+        &:nth-child(12n + 4) {
+          @apply col-span-6 row-span-8;
+        }
+        &:nth-child(12n + 5) {
+          @apply col-span-10 row-span-4;
+        }
+        &:nth-child(12n + 6) {
+          @apply col-span-8 row-span-4;
+        }
+
+        &:nth-child(12n + 7) {
+          @apply col-span-4 row-span-12;
+        }
+        &:nth-child(12n + 8) {
+          @apply col-span-8 row-span-8;
+        }
+        &:nth-child(12n + 9) {
+          @apply col-span-12 row-span-4;
+        }
+        &:nth-child(12n + 10) {
+          @apply col-span-12 row-span-4;
+        }
+
+        &:nth-child(12n + 11) {
+          @apply col-span-12 row-span-4;
+        }
+        &:nth-child(12n + 12) {
+          @apply col-span-8 row-span-4;
+        }*/
+      }
+    }
+
+    /**
+     * 24R x 24C GRID: 24 elements
+     */
+    &.cols-4 {
+      @apply grid-cols-24 grid-rows-24;
+
+      .masonry-grid-item {
+        &:nth-child(24n + 1) {
+          @apply col-span-24 row-span-4;
+        } /* 1 ROWS */
+
+        &:nth-child(24n + 2) {
+          @apply col-span-9 row-span-4;
+        } /* 4 ROWS */
+        &:nth-child(24n + 3) {
+          @apply col-span-5 row-span-4;
+        }
+        &:nth-child(24n + 4) {
+          @apply col-span-4 row-span-4;
+        }
+        &:nth-child(24n + 5) {
+          @apply col-span-6 row-span-5;
+        } /* 5 ROWS */
+
+        &:nth-child(24n + 6) {
+          @apply col-span-7 row-span-3;
+        }
+        &:nth-child(24n + 7) {
+          @apply col-span-3 row-span-7;
+        }
+        &:nth-child(24n + 8) {
+          @apply col-span-8 row-span-4;
+        }
+        &:nth-child(24n + 9) {
+          @apply col-span-6 row-span-3;
+        }
+        &:nth-child(24n + 10) {
+          @apply col-span-7 row-span-2;
+        } /* 2 ROWS */
+        &:nth-child(24n + 11) {
+          @apply col-span-6 row-span-3;
+        } /* 1 ROW */
+        &:nth-child(24n + 12) {
+          @apply col-span-8 row-span-3;
+        }
+
+        &:nth-child(24n + 13) {
+          @apply col-span-7 row-span-4;
+        }
+        &:nth-child(24n + 14) {
+          @apply col-span-5 row-span-3;
+        }
+        &:nth-child(24n + 15) {
+          @apply col-span-6 row-span-2;
+        }
+        &:nth-child(24n + 16) {
+          @apply col-span-6 row-span-2;
+        }
+        &:nth-child(24n + 17) {
+          @apply col-span-7 row-span-4;
+        }
+        &:nth-child(24n + 18) {
+          @apply col-span-4 row-span-5;
+        }
+        &:nth-child(24n + 19) {
+          @apply col-span-8 row-span-4;
+        }
+        &:nth-child(24n + 20) {
+          @apply col-span-5 row-span-3;
+        }
+
+        &:nth-child(24n + 21) {
+          @apply col-span-12 row-span-3;
+        }
+        &:nth-child(24n + 22) {
+          @apply col-span-4 row-span-3;
+        }
+        &:nth-child(24n + 23) {
+          @apply col-span-4 row-span-3;
+        }
+        &:nth-child(24n + 24) {
+          @apply col-span-4 row-span-2;
+        }
+      }
+    }
+  }
+}

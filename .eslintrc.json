@@ -1,0 +1,140 @@
+{
+  "root": true,
+
+  "plugins": ["perfectionist", "unused-imports", "@typescript-eslint", "prettier"],
+  "extends": ["next/core-web-vitals", "eslint:recommended", "plugin:import/recommended"],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "project": "./tsconfig.json"
+  },
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "ignorePatterns": [".git", ".env", ".next", "i18n", "node_modules", "public", "next.config.ts", "postcss.config.mjs", "tailwind.config.ts"],
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
+  },
+  "rules": {
+    "import/newline-after-import": 2,
+    "import/no-unused-modules": 2,
+    "import/no-anonymous-default-export": 0,
+    "unused-imports/no-unused-imports": 1,
+
+    "no-unused-vars": [0, { "ignoreRestSiblings": true }],
+    "no-console": 0,
+    "no-empty": 0,
+    "no-var": 2,
+    "curly": [2, "all"],
+    // "max-len": [
+    //   2,
+    //   {
+    //     "code": 200
+    //   }
+    // ],
+    "indent": [
+      2,
+      2,
+      {
+        "SwitchCase": 1
+      }
+    ],
+    "arrow-body-style": [0],
+    // "sort-imports": [
+    //   2,
+    //   {
+    //     "memberSyntaxSortOrder": ["none", "single", "multiple", "all"]
+    //   }
+    // ],
+    "no-new": 0,
+    "no-underscore-dangle": [
+      0,
+      {
+        "allowAfterSuper": true
+      }
+    ],
+    "max-depth": [2, 3],
+    "max-params": [1, 6],
+    "complexity": [2, 100],
+    "max-lines": [
+      2,
+      {
+        "max": 400,
+        "skipBlankLines": true,
+        "skipComments": true
+      }
+    ],
+    "max-lines-per-function": [
+      2,
+      {
+        "max": 200,
+        "skipBlankLines": true,
+        "skipComments": true
+      }
+    ],
+    "max-nested-callbacks": [2, 3],
+    "newline-after-var": [0, "always"],
+    "no-param-reassign": [
+      0,
+      {
+        "props": true
+      }
+    ],
+    "linebreak-style": [0, "windows"],
+    "padding-line-between-statements": [
+      0,
+      {
+        "blankLine": "always",
+        "prev": "*",
+        "next": "return"
+      },
+      {
+        "blankLine": "always",
+        "prev": ["const", "let", "var"],
+        "next": "*"
+      },
+      {
+        "blankLine": "any",
+        "prev": ["const", "let", "var"],
+        "next": ["const", "let", "var"]
+      }
+    ],
+    "no-inline-comments": 0,
+    "object-curly-newline": [
+      2,
+      {
+        "ObjectExpression": {
+          "multiline": true
+        },
+        "ObjectPattern": {
+          "multiline": true
+        },
+        "ImportDeclaration": {
+          "multiline": true,
+          "minProperties": 2
+        },
+        "ExportDeclaration": {
+          "multiline": true,
+          "minProperties": 2
+        }
+      }
+    ],
+    "object-curly-spacing": [2, "always"],
+    "prefer-destructuring": [1],
+    "react/display-name": 0,
+
+    "@typescript-eslint/no-unused-vars": [
+      0,
+      { "caughtErrors": "none", "varsIgnorePattern": "^_", "argsIgnorePattern": "^_", "destructuredArrayIgnorePattern": "^_", "ignoreRestSiblings": true }
+    ]
+  }
+}

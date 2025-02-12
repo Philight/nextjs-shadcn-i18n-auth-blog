@@ -1,0 +1,88 @@
+@layer base {
+  /** 
+   * TYPOGRAPHY
+   */
+
+  .heading {
+    @apply font-heading;
+  }
+  .heading--xl {
+    @apply text-4xl desk-lg:text-5xl-minus; /*  */
+    @apply font-semibold;
+    @apply tracking-normal;
+  }
+  .heading--lg {
+    @apply text-2xl tab-sm:text-3xl desk-lg:text-4xl; /*  */
+    @apply font-semibold;
+    @apply tracking-1;
+  }
+  .heading--md {
+    @apply text-lg tab-sm:text-xl desk-lg:text-2xl;
+    @apply tracking-2;
+  }
+  .heading--sm {
+    @apply text-base desk-sm:text-sm;
+    @apply tracking-2;
+  }
+  .heading--xs {
+    @apply text-sm;
+    @apply tracking-2;
+  }
+  .heading--2xs {
+    @apply text-3xs tab-sm:text-2xs desk-md:text-sm;
+    @apply lowercase;
+    @apply tracking-3;
+  }
+
+  .subheading {
+    @apply font-subheading;
+  }
+  .subheading--lg {
+    @apply text-2xl;
+  }
+  .subheading--md {
+    @apply text-lg;
+  }
+  .subheading--sm {
+    @apply text-base;
+    @apply tracking-1;
+  }
+
+  .body {
+    @apply font-body;
+  }
+  .body--xl {
+    @apply text-2xl;
+    @apply font-semibold;
+    @apply tracking-1;
+  }
+  .body--lg {
+    @apply text-xl;
+    @apply tracking-2;
+  }
+  .body--md {
+    @apply text-base;
+    @apply tracking-1;
+  }
+  .body--sm {
+    @apply text-sm;
+    @apply tracking-3;
+  }
+
+  .btn-text {
+    @apply font-btn;
+  }
+  .btn-text--lg {
+    @apply text-base tab-sm:text-xl;
+  }
+  .btn-text--md {
+    @apply text-sm;
+  }
+  .btn-text--sm {
+    @apply text-xs-plus tab-sm:text-sm;
+  }
+
+  .highlight-text {
+    @apply font-highlight;
+  }
+}

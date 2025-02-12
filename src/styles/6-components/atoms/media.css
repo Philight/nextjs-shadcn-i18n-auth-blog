@@ -1,0 +1,25 @@
+/** 
+ * MEDIA
+ */
+
+@layer components {
+  .image__c {
+    @apply relative h-full w-full;
+    &.square {
+      .image__placeholder {
+        @apply h-0 w-full pt-full;
+      }
+      .image__image {
+        @apply abs-fill;
+        @apply aspect-square h-auto;
+      }
+    }
+    .image__overlay {
+      @apply z-10 bg-black/60;
+    }
+  }
+
+  .LazyLoadImage__c {
+    @apply relative;
+  }
+}

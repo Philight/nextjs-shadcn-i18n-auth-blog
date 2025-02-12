@@ -1,0 +1,25 @@
+/**
+ * COMPONENTS: Molecules 
+ * 
+ */
+
+#nprogress {
+  @apply pointer-events-none;
+  .bar {
+    @apply top-0 left-0 h-[2.5px] z-[9999] w-full fixed;
+    @apply bg-primary;
+
+    boxshadow: 0 0 2px var(--primary);
+  }
+
+  .peg {
+    @apply right-0 opacity-100 w-[100px] h-full block absolute rotate-3 -translate-y-2;
+    @apply shadow-[0_0_10px_var(--foreground),0_0_5px_var(--foreground)];
+    /*    boxShadow: 0 0 10px var(--foreground), 0 0 5px var(--foreground);*/
+  }
+}
+
+.search-bar__c {
+  @apply h-auto;
+  @apply rounded-lg border shadow-md;
+}

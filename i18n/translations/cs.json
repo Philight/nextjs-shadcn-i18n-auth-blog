@@ -1,0 +1,120 @@
+{
+  "navigation": {
+    "home": "Domov",
+    "blog": "Blog",
+    "login": "Přihlásit se",
+    "signup": "Registrace",
+    "profile": "Profil",
+    "logout": "Odhlásit se",
+    "create_post": "Přidat článek"
+  },
+  "buttons": {
+    "delete": "Zmazat",
+    "continue": "Pokračovat",
+    "submit": "Odeslat",
+    "reset": "Vynulovat",
+    "cancel": "Zrušit",
+    "confirm": "Potvrdit"
+  },
+  "home": {
+    "visit_blog_post": "Navštiv {author}'s článek"
+  },
+  "blog": {
+    "title": "Blog",
+    "blog_title": "Nejnovější články",
+
+    "visit_blog_post": "Navštiv {author}'s článek",
+    "user_visit_profile": "Navštiv {username}'s profil",
+    "user_no_socials": "This user has no socials yet."
+  },
+  "posts": {
+    "title": "Článek: {title}"
+  },
+  "profile": {
+    "title": "Profil",
+    "description": "Proveď svoje úpravy ve formuláři. Pak klikni na uložit",
+    "button": "Uložit změny"
+  },
+  "author": {
+    "title": "Příspěvky autora",
+    "blog_title": "Nejnovější články od autora",
+    "description": "Proveď svoje úpravy ve formuláři. Pak klikni na uložit",
+    "button": "Uložit změny"
+  },
+
+  "create_post": {
+    "content": "Obsah",
+    "title": "Titulek",
+    "author": "Autor",
+    "button": "Vytvořit článek",
+    "success": "Článek vytvořen"
+  },
+  "signin": {
+    "title": "Přihlášení do blogu",
+    "success": "Přihlášení úspěšné. Přesměřování..",
+    "button": "Přihlásit se",
+    "email": "E-mail",
+    "password": "Heslo",
+    "redirect": {
+      "title": "Ješte nemáte účet?",
+      "link": "Vytvořte si ho"
+    }
+  },
+  "signup": {
+    "title": "Vytvořeni účtu",
+    "success": "Registrace úspěšné. Přesměřování..",
+    "button": "Vytvořeni účtu",
+    "email": "E-mail",
+    "firstname": "Křestní jméno",
+    "lastname": "Přijmeni",
+    "password": "Heslo",
+    "password_confirm": "Opakovat heslo",
+    "redirect": {
+      "title": "Již máte účet?",
+      "link": "Přihlásit se"
+    }
+  },
+  "no_blog_posts": {
+    "title": "Žádné články se nenašli :(",
+    "description": "To je ale pěch...",
+    "content": "Možná, skusit to znova?"
+  },
+
+  "posts_create": {
+    "hero_title": "Přidání článku",
+    "title": "Titulek",
+    "content": "Obsah",
+    "author": "Autor",
+    "send": "Odeslat",
+    "success": "Článek vytvořen"
+  },
+  "user": {
+    "hero_title": "About {name}",
+    "user_no_socials": "This user has no socials yet.",
+    "user_no_bio": "This user has no bio yet."
+  },
+  "toast": {
+    "fetch_users_error": "Could not fetch users"
+  },
+  "no_users_card": {
+    "title": "No users found :(",
+    "description": "Well that was unfortunate...",
+    "content": "Maybe try again?"
+  },
+  "filter": {
+    "title": "Looking for someone?",
+    "placeholder": "Search by username or email",
+    "sort_asc": "Sort alphabetically",
+    "sort_desc": "Sort in reverse alphabetical order"
+  },
+  "pagination": {
+    "previous_btn": "Previous",
+    "next_btn": "Next"
+  },
+  "footer": {
+    "title": "Need any support or have a new project in mind? We're always open for a chat, so get in touch to find out how we can help!",
+    "subtitle": "Developed & Designed by",
+    "follow_us": "Follow us",
+    "sitemap": "Sitemap"
+  }
+}

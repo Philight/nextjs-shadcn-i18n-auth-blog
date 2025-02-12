@@ -1,0 +1,153 @@
+{
+  "openapi": "3.0.0",
+  "paths": {
+    "/auth/signup": {
+      "post": {
+        "operationId": "signUp",
+        "summary": "Signup a new user",
+        "parameters": [],
+        "requestBody": { "required": true, "content": { "application/json": { "schema": { "$ref": "#/components/schemas/SignupInput" } } } },
+        "responses": {
+          "201": {
+            "description": "Returns access and refresh tokens",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Auth" } } }
+          }
+        },
+        "tags": ["auth"],
+        "security": [{ "Authorization": [] }]
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "operationId": "signIn",
+        "summary": "Login an existing user",
+        "parameters": [],
+        "requestBody": { "required": true, "content": { "application/json": { "schema": { "$ref": "#/components/schemas/LoginInput" } } } },
+        "responses": {
+          "200": {
+            "description": "Returns access and refresh tokens",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Auth" } } }
+          }
+        },
+        "tags": ["auth"],
+        "security": [{ "Authorization": [] }]
+      }
+    },
+    "/auth/refresh-token": {
+      "post": {
+        "operationId": "refreshToken",
+        "summary": "Refresh access token using a refresh token",
+        "parameters": [],
+        "requestBody": { "required": true, "content": { "application/json": { "schema": { "$ref": "#/components/schemas/RefreshTokenInput" } } } },
+        "responses": {
+          "200": {
+            "description": "Returns a new access token",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/RefreshResponceModel" } } }
+          }
+        },
+        "tags": ["auth"],
+        "security": [{ "Authorization": [] }]
+      }
+    },
+    "/posts": {
+      "post": {
+        "operationId": "createPost",
+        "summary": "Create a new post",
+        "parameters": [],
+        "requestBody": { "required": true, "content": { "application/json": { "schema": { "$ref": "#/components/schemas/CreatePostInput" } } } },
+        "responses": { "200": { "description": "", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/PostResponce" } } } } },
+        "tags": ["Posts"],
+        "security": [{ "Authorization": [] }]
+      },
+      "get": {
+        "operationId": "getPosts",
+        "summary": "Get all posts",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Returns a list of all posts",
+            "content": { "application/json": { "schema": { "type": "array", "items": { "$ref": "#/components/schemas/PostResponse" } } } }
+          }
+        },
+        "tags": ["Posts"],
+        "security": [{ "Authorization": [] }]
+      }
+    },
+    "/posts/user/{userId}": {
+      "get": {
+        "operationId": "getUserPosts",
+        "summary": "Get all posts of a user",
+        "parameters": [{ "name": "userId", "required": true, "in": "path", "description": "ID of the user", "schema": { "type": "string" } }],
+        "responses": {
+          "200": {
+            "description": "Returns a list of users posts",
+            "content": { "application/json": { "schema": { "type": "array", "items": { "$ref": "#/components/schemas/PostResponse" } } } }
+          }
+        },
+        "tags": ["Posts"],
+        "security": [{ "Authorization": [] }]
+      }
+    },
+    "/posts/{postId}": {
+      "get": {
+        "operationId": "getPost",
+        "summary": "Get a post by its ID",
+        "parameters": [{ "name": "postId", "required": true, "in": "path", "description": "ID of the post", "schema": { "type": "string" } }],
+        "responses": {
+          "200": { "description": "Returns a specific post", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/PostResponse" } } } }
+        },
+        "tags": ["Posts"],
+        "security": [{ "Authorization": [] }]
+      }
+    }
+  },
+  "info": { "title": "ThinkEasy", "description": "Test Task BE", "version": "1.0", "contact": {} },
+  "tags": [],
+  "servers": [],
+  "components": {
+    "securitySchemes": { "Authorization": { "scheme": "bearer", "bearerFormat": "JWT", "type": "http", "in": "header" } },
+    "schemas": {
+      "SignupInput": {
+        "type": "object",
+        "properties": { "email": { "type": "string" }, "password": { "type": "string" }, "firstname": { "type": "string" }, "lastname": { "type": "string" } },
+        "required": ["email", "password", "firstname", "lastname"]
+      },
+      "Auth": {
+        "type": "object",
+        "properties": { "accessToken": { "type": "string" }, "refreshToken": { "type": "string" } },
+        "required": ["accessToken", "refreshToken"]
+      },
+      "LoginInput": { "type": "object", "properties": { "email": { "type": "string" }, "password": { "type": "string" } }, "required": ["email", "password"] },
+      "RefreshTokenInput": { "type": "object", "properties": { "token": { "type": "string" } }, "required": ["token"] },
+      "RefreshResponceModel": { "type": "object", "properties": { "access_token": { "type": "string" } }, "required": ["access_token"] },
+      "CreatePostInput": {
+        "type": "object",
+        "properties": { "content": { "type": "string" }, "title": { "type": "string" } },
+        "required": ["content", "title"]
+      },
+      "PostResponce": {
+        "type": "object",
+        "properties": {
+          "title": { "type": "string", "example": "Title" },
+          "content": { "type": "object", "example": "Content" },
+          "published": { "type": "boolean", "example": false },
+          "author": { "type": "object" }
+        },
+        "required": ["title", "content", "published", "author"]
+      },
+      "PostResponse": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string", "example": "cllc64dkz0003rhe9t32cxhby" },
+          "createdAt": { "format": "date-time", "type": "string", "example": "2023-08-15T10:35:51.107Z" },
+          "updatedAt": { "format": "date-time", "type": "string", "example": "2023-08-15T10:35:51.107Z" },
+          "title": { "type": "string", "example": "Title Example" },
+          "content": { "type": "string", "example": "Content" },
+          "published": { "type": "boolean", "example": true },
+          "authorId": { "type": "string", "example": "cllc64dky0002rhe9stschn2u" }
+        },
+        "required": ["id", "createdAt", "updatedAt", "title", "content", "published", "authorId"]
+      }
+    }
+  }
+}

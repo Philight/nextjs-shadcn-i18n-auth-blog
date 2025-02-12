@@ -1,0 +1,142 @@
+/** 
+ * GRAPHIC
+ */
+
+@layer components {
+  .icon__c {
+    @apply h-5 w-5;
+    &:not(.multi-color) .icon:not(svg) {
+      @apply h-full w-full bg-black;
+    }
+    .multi-color svg {
+      @apply bg-transparent;
+    }
+  }
+
+  .loader__c {
+    .loader__background {
+      @apply bg-[#03002e];
+    }
+    .icon__c {
+      @apply h-20 w-20;
+      .icon {
+        @apply bg-[#ff0000];
+      }
+    }
+
+    .image__c {
+      @apply h-16 w-16;
+    }
+  }
+
+  .shape__c {
+    @apply bg-black-primary;
+    &.circle {
+      @apply h-6 w-6 rounded-full;
+      &.outline {
+        @apply border border-solid border-black bg-transparent outline-none;
+      }
+      &.fill {
+        @apply bg-black-primary;
+      }
+    }
+    &.rectangle {
+      @apply h-6 w-8;
+      &.outline {
+        @apply border border-solid border-black bg-transparent outline-none;
+      }
+      &.fill {
+        @apply bg-black-primary;
+      }
+    }
+    &.square {
+      @apply h-0 w-full pt-full;
+    }
+    &.line {
+      @apply h-0.5 w-4;
+      &.horizontal {
+        &.short {
+          @apply h-[1px] w-8;
+        }
+        &.long {
+          @apply h-[1px] w-16;
+        }
+      }
+      &.vertical {
+        &.short {
+          @apply h-8 w-[1px];
+        }
+        &.long {
+          @apply h-16 w-[1px];
+        }
+      }
+      &.top {
+        @apply absolute top-0;
+      }
+      &.bottom {
+        @apply absolute bottom-0;
+      }
+      &.right {
+        @apply absolute right-0;
+      }
+      &.left {
+        @apply absolute left-0;
+      }
+    }
+    &.slash {
+      &.short {
+        @apply h-4 w-0.5 rotate-[20deg];
+      }
+    }
+    &.underline {
+      @apply abs-center-x -bottom-1.5 z-10 h-0.5 w-[103%];
+    }
+    &.divider {
+      @apply my-2 h-0.5 w-full;
+      @apply bg-gray-light;
+    }
+    &.parallelogram {
+      transform: skew(-17deg);
+      @apply border border-solid border-white;
+      color: #fff;
+      box-shadow:
+        0px 0px 6px 0px #fff,
+        inset 0px 0px 20px 0px rgb(255 255 255 / 61%);
+    }
+    &.light-saber {
+      @apply h-24 w-0.5;
+      @apply text-red;
+      border-radius: 100px;
+
+      background-color: #fff;
+      box-shadow: 0px 0px 6px 3px;
+      transition:
+        left 0.6s ease-out,
+        width 0.6s ease-in;
+    }
+  }
+
+  .layer__c {
+    @apply abs-fill-parent;
+
+    &.gradient {
+      background: linear-gradient(217deg, rgba(var(--color-red) / 0.8), rgba(var(--color-red) / 0) 70.71%),
+        linear-gradient(127deg, rgba(var(--color-green) / 0.8), rgba(var(--color-green) / 0) 70.71%),
+        linear-gradient(336deg, rgba(var(--color-blue) / 0.8), rgba(var(--color-blue) / 0) 70.71%);
+    }
+    &.backdrop {
+      @apply -z-10 bg-black/80;
+    }
+    &.overlay {
+      @apply z-10 bg-black/60;
+    }
+    &.stripe {
+      @apply top-0 -z-10 h-1/2 translate-y-0 bg-black-primary;
+    }
+  }
+
+  .divider__c {
+    @apply my-2 h-0.5 w-full;
+    @apply bg-gray-light;
+  }
+}

@@ -1,0 +1,71 @@
+/**
+ * PLUGINS
+ * 
+ * override external component plugins, utils
+ * 
+ */
+
+@layer utilities {
+  /** 
+   * EXTERNAL 
+   */
+
+  #icon-sprite-sheet {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .svgicon.custom-class-1 {
+    width: 300px;
+    height: 500px;
+    @apply text-[green];
+  }
+
+  /** 
+   * UTIL
+   */
+
+  .style-guide {
+    .style-guide__font-sizes {
+      font-family: Monospace;
+      table {
+        @apply py-2;
+      }
+      th {
+        @apply min-w-[140px] py-4 text-center;
+        @apply border-x-0 border-b border-t-0 border-solid border-black bg-primary text-white-primary;
+        &:first-child {
+          @apply bg-transparent text-black-primary;
+        }
+      }
+      td {
+        @apply py-2;
+        @apply bg-white text-center;
+        &:first-child {
+          @apply sticky left-0 bg-secondary text-white-primary;
+        }
+      }
+    }
+    .style-guide__color-palette {
+      font-family: Monospace;
+      font-size: 16px;
+      text-transform: uppercase;
+      @apply flex items-center gap-4;
+      .style-guide__color-palette-color {
+        input {
+          @apply h-72 w-14;
+          @apply shadow-xl;
+          border-color: transparent;
+        }
+        label {
+          @apply mt-2;
+        }
+      }
+    }
+  }
+}

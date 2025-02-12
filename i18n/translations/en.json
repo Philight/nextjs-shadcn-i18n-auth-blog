@@ -1,0 +1,92 @@
+{
+  "navigation": {
+    "home": "Home",
+    "blog": "Blog",
+    "login": "Login",
+    "signup": "Signup",
+    "profile": "Profile",
+    "logout": "Logout",
+    "create_post": "New article"
+  },
+  "buttons": {
+    "delete": "Delete",
+    "continue": "Continue",
+    "submit": "Submit",
+    "reset": "Reset",
+    "cancel": "Cancel",
+    "confirm": "Confirm"
+  },
+  "home": {
+    "hero_title": "Once upon a time, in a distant land, there was a quiet village surrounded by rolling hills and endless skies. The people lived simple lives, filled with laughter, stories, and the warmth of community. Every morning, the sun painted the horizon with hues of gold and amber, while gentle breezes whispered through the trees. In the heart of the village stood an ancient oak, a symbol of strength and resilience, its roots deep in the earth and branches reaching for the stars. Though days passed swiftly, the spirit of wonder remained, carried in the hearts of those who called this peaceful place home.",
+    "blog_title": "Newest",
+    "visit_blog_post": "Visit {author}'s blog post",
+    "user_visit_profile": "Visit {username}'s profile",
+    "user_no_socials": "This user has no socials yet."
+  },
+  "profile": {
+    "title": "Profil",
+    "description": "Make changes to your account here. Click save when you're done.",
+    "button": "Uložit změny"
+  },
+  "login": {
+    "form_title": "Nice to see you again! 👀",
+    "form_redirect": {
+      "question": "Don't have an account?",
+      "link": "Signup here!"
+    }
+  },
+  "signup": {
+    "form_title": "New member, yay! 🎉",
+    "form_redirect": {
+      "question": "Already have an account?",
+      "link": "Login here!"
+    }
+  },
+
+  "no_blog_posts": {
+    "title": "No posts found :(",
+    "description": "Well that was unfortunate...",
+    "content": "Maybe try again?"
+  },
+  "posts": {
+    "hero_title": "Title"
+  },
+  "posts_create": {
+    "hero_title": "Article creation",
+    "title": "Title",
+    "content": "Content",
+    "author": "Author",
+    "send": "Send",
+    "success": "Post created"
+  },
+  "user": {
+    "hero_title": "About {name}",
+    "user_no_socials": "This user has no socials yet.",
+    "user_no_bio": "This user has no bio yet."
+  },
+
+  "toast": {
+    "fetch_users_error": "Could not fetch users"
+  },
+  "no_users_card": {
+    "title": "No users found :(",
+    "description": "Well that was unfortunate...",
+    "content": "Maybe try again?"
+  },
+  "filter": {
+    "title": "Looking for someone?",
+    "placeholder": "Search by username or email",
+    "sort_asc": "Sort alphabetically",
+    "sort_desc": "Sort in reverse alphabetical order"
+  },
+  "pagination": {
+    "previous_btn": "Previous",
+    "next_btn": "Next"
+  },
+  "footer": {
+    "title": "Need any support or have a new project in mind? We're always open for a chat, so get in touch to find out how we can help!",
+    "subtitle": "Developed & Designed by",
+    "follow_us": "Follow us",
+    "sitemap": "Sitemap"
+  }
+}
