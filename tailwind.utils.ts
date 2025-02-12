@@ -56,33 +56,6 @@ const transformColor = (declaration: String) => {
 // ================================================================
 
 /**
- * PostCSS Parse
- */
-// export function parseCSS(pathToFile, propertyPrefixes, propertyFormat) {
-//   fs.readFile(pathToFile, (err, cssCode) => {
-//     postcss([
-//       // Plugins
-//       // postcssPluginSass(),
-//       postcssPluginReporter(),
-//     ])
-//       // Without `from` option PostCSS could generate wrong source map and will not find Browserslist config. Set it to 'CSS file path' or to `undefined` to prevent this warning.
-//       .process(cssCode, {
-//         from: pathToFile ?? undefined,
-//         // parser: postcssPluginSCSS
-//       })
-//       .then(r => {
-//         console.log('------- PostCSS obj');
-//         // console.log(JSON.stringify(r, null, 4));
-
-//         const CSSRules = r.root.nodes ?? []
-//         console.log(JSON.stringify(CSSRules, null, 4));
-
-//       })
-//       .catch(e => console.error(e));
-//   });
-// }
-
-/**
  * Read CSS rules from CSS variables file
  *
  * @returns {object} Tailwind config theme properties

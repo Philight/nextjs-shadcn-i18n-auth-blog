@@ -1,6 +1,4 @@
-import {
-  DetailedHTMLProps, HTMLAttributes, ReactNode 
-} from 'react';
+import { DetailedHTMLProps, HTMLAttributes, ReactNode } from 'react';
 
 import Header from '@/organisms/Header';
 import { Footer } from '@/organisms/Footer';
@@ -31,8 +29,6 @@ const Auth = ({ className, children, title = 'Title', bannerProps }: MainPropsTy
           className=""
           title={title}
           imageProps={{
-            // src: '/assets/images/blog_banner.jpg',
-            // src: 'https://www.sanfordandsoncoins.com/sites/default/files/2024-05/antiques%20in%20a%20home.jpeg',
             fill: true,
             ...bannerProps,
           }}

@@ -1,9 +1,6 @@
 import { createLocalizedPathnamesNavigation } from 'next-intl/navigation';
 
-import {
-  locales, pathnames, localePrefix 
-} from './config-global';
-// import { locale, messages } from '../i18n/request';
+import { locales, pathnames, localePrefix } from './config-global';
 
 export const { Link, getPathname, redirect, usePathname, useRouter } = createLocalizedPathnamesNavigation({
   locales,
@@ -30,7 +27,7 @@ export const routes = {
     signup: `${ROOTS.AUTH}/signup`,
   },
   // PROFILE
-  profile: { root: ROOTS.PROFILE, },
+  profile: { root: ROOTS.PROFILE },
   // BLOG
   blog: { root: ROOTS.BLOG },
   posts: {

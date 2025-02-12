@@ -25,14 +25,6 @@ export const IS_SERVER = typeof window === 'undefined';
 
 export const PAGINATIOIN_LIMIT = 10;
 
-export type InitialStateType = {
-  status: number;
-  message: string;
-  timestamp: number;
-};
-
-export const INITIAL_STATE = { status: 500, message: '', timestamp: Date.now() };
-
 export const ICONS_SIZES = {
   xs: 8,
   sm: 16,

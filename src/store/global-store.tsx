@@ -1,8 +1,6 @@
 // import create from 'zustand';
 import { createStore } from 'zustand/vanilla';
-import {
-  persist, createJSONStorage 
-} from 'zustand/middleware';
+import { persist, createJSONStorage } from 'zustand/middleware';
 
 // import { UserType } from '@/store';
 import { Tokens } from '@/utils/server/functions/auth';
@@ -55,10 +53,6 @@ const setters = (set): StoreActions => {
 
 export const createGlobalStore = (initState: IStoreState = initialState) => {
   return createStore<GlobalStore>()(
-    // (set) => ({
-    //   ...initState,
-    //   ...setters(set),
-    // })
     persist(
       (set, get) => ({
         ...initState,

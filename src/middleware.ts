@@ -1,7 +1,5 @@
 export { default } from 'next-auth/middleware';
-import {
-  NextResponse, NextRequest 
-} from 'next/server';
+import { NextResponse, NextRequest } from 'next/server';
 
 import { routes } from './navigation';
 import { TOKEN_COOKIE_NAME } from '@/utils/constants';
@@ -21,11 +19,7 @@ export async function middleware(request: NextRequest) {
   /**
    * Manual redirecting (with business conditions)
    */
-
   const requestPathname = request.nextUrl.pathname;
-
-  const tokenData = JSON.parse(request.cookies.get(TOKEN_COOKIE_NAME)?.value ?? '{}');
-  console.log('--middleware', tokenData);
 
   switch (true) {
     // Home
@@ -50,8 +44,13 @@ export async function middleware(request: NextRequest) {
   // }
 
   // Handle simple requests
+
   const response = NextResponse.next();
 
+  /**
+   * Cookies transform
+   */
+  const tokenData = JSON.parse(request.cookies.get(TOKEN_COOKIE_NAME)?.value ?? '{}');
   // if (Object.hasOwn(tokenData, 'accessToken')) {
   //   response.cookies.set({
   //     name: TOKEN_COOKIE_NAME,

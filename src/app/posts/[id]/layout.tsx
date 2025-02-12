@@ -23,10 +23,7 @@ export default async function Layout({ children, params }: { children: React.Rea
 
   try {
     // post = BLOG_POST;
-    post = (
-      await getPost(id, { next: { tags: [`getPost-${id}`] }, })
-    ).data;
-    console.log('getPost', post);
+    post = (await getPost(id, { next: { tags: [`getPost-${id}`] } })).data;
   } catch (e) {}
 
   if (!post) {

@@ -1,11 +1,6 @@
 // Fetching data on the server with the fetch API: https://nextjs.org/docs/app/building-your-application/data-fetching/fetching#fetching-data-on-the-server-with-the-fetch-api
-// import { headers } from 'next/headers';
-import {
-  handleServerError, fetchApi, axiosApi 
-} from '../functions';
-import {
-  PostType, CreatePostParams 
-} from './types';
+import { handleServerError, fetchApi, axiosApi } from '../functions';
+import { PostType, CreatePostParams } from './types';
 
 // ================================================
 
@@ -38,16 +33,6 @@ export async function createPost(params: CreatePostParams) {
   try {
     const method = 'POST';
     const body = params;
-
-    // const data = await axiosApi(`/posts/create`, {
-    //   method,
-    //   headers: {
-    //    'Content-Type': 'multipart/form-data'
-    //   },
-    //   data: serializeJsonToFormData(params),
-    // });
-    // console.log('createPost', data);
-    // return data;
 
     const res = await fetchApi(`/q2/posts/create`, {
       // mode: 'no-cors',

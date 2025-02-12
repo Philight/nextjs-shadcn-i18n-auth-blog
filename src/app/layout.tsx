@@ -1,15 +1,10 @@
-import type {
-  Metadata, Viewport 
-} from 'next';
+import type { Metadata, Viewport } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
-import {
-  getLocale, getMessages 
-} from 'next-intl/server';
+import { getLocale, getMessages } from 'next-intl/server';
 import { ReactNode } from 'react';
 
 import Providers from './providers';
 
-// import { roboto } from 'public/fonts/roboto';
 // import { montserrat } from 'public/fonts/montserrat';
 import { merriweather } from 'public/fonts/merriweather';
 import '../styles/globals.css';
@@ -95,7 +90,9 @@ const mainFontClass = merriweather.className;
 
 // ============================================================
 
-export default async function RootLayout({ children, }: Readonly<{
+export default async function RootLayout({
+  children,
+}: Readonly<{
   children: ReactNode;
 }>) {
   const locale = await getLocale();

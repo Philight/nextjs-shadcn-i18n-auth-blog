@@ -28,7 +28,6 @@ export default async function Home() {
         cache: 'force-cache',
       })
     ).data;
-    console.log('getPosts', posts);
   } catch (e) {
     console.error(e);
   }

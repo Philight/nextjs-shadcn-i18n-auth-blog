@@ -1,6 +1,4 @@
-import {
-  DetailedHTMLProps, HTMLAttributes, ReactNode 
-} from 'react';
+import { DetailedHTMLProps, HTMLAttributes, ReactNode } from 'react';
 
 import Header from '@/components/organisms/Header';
 import { Footer } from '@/components/organisms/Footer';
@@ -32,8 +30,6 @@ const Main = ({ className, children, title = 'Title', bannerProps, showSearch = 
           className=""
           title={title}
           imageProps={{
-            // src: '/assets/images/blog_banner.jpg',
-            // src: 'https://www.sanfordandsoncoins.com/sites/default/files/2024-05/antiques%20in%20a%20home.jpeg',
             fill: true,
             ...bannerProps,
           }}

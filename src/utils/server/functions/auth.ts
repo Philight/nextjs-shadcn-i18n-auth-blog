@@ -3,11 +3,11 @@
 import bcrypt from 'bcryptjs';
 
 import { cookies } from 'next/headers';
-import {
-  getCookie, setCookie, hasCookie, getCookies 
-} from 'cookies-next/server';
+import { getCookie, setCookie } from 'cookies-next/server';
 
 import { TOKEN_COOKIE_NAME } from '@/utils/constants';
+
+// ================================================
 
 export type Tokens = {
   accessToken: string;
@@ -31,9 +31,5 @@ export async function saveToken(tokenData: Tokens, options?: any) {
 }
 
 export async function getToken() {
-  const allCookies = await getCookies({ cookies });
-  console.log('--getToken allCookies', allCookies);
-  console.log(await hasCookie(TOKEN_COOKIE_NAME, { cookies }));
-
   return await getCookie(TOKEN_COOKIE_NAME, { cookies });
 }

@@ -20,7 +20,6 @@ export async function generateBlurDataURL(image: string | StaticImport): Promise
 }
 
 export const getImageWithPlaiceholder = async (src: string) => {
-  // const buffer = await fetch(src).then(async (res) => Buffer.from(await res.arrayBuffer()));
   const buffer = await loadBufferExternal(src);
 
   const {
