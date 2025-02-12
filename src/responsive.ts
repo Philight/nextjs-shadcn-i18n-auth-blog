@@ -9,16 +9,16 @@ export const getGridDimensions = (DEVICE_TYPE: TDeviceType): { rows: number; col
     case 'MOBILE_LG':
     case 'TABLET_SM':
     case 'TABLET_MD':
-      return { rows: 4, cols: 1 };
+      return { rows: 4, cols: 1 }; // until this bp
     case 'TABLET_LG':
     case 'DESKTOP_SM':
-      return { rows: 1, cols: 3 };
+      return { rows: 1, cols: 3 }; // until this bp
     case 'DESKTOP_MD':
     case 'DESKTOP_LG':
     case 'DESKTOP_XL':
-      return { rows: 1, cols: 4 };
+      return { rows: 1, cols: 4 }; // until this bp
     default:
-      return { rows: 1, cols: 1 };
+      return { rows: 1, cols: 1 }; // until this bp
   }
 };
 

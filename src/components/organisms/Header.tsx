@@ -51,17 +51,19 @@ const durationFn = function (deltaTop): number {
   return deltaTop;
 };
 
-const scrollToElement = ({ element = null, duration = 1000, delay = 0, smooth = 'easeInOutQuart', offset = 0 }: any) => {
-  if (typeof document === 'undefined') {
-    return;
-  }
-  scroller.scrollTo(element, {
-    duration,
-    delay,
-    smooth,
-    offset,
-  });
-};
+const scrollToElement =
+  ({ element = null, duration = 1000, delay = 0, smooth = 'easeInOutQuart', offset = 0 }: any) =>
+    () => {
+      if (typeof document === 'undefined') {
+        return;
+      }
+      scroller.scrollTo(element, {
+        duration,
+        delay,
+        smooth,
+        offset,
+      });
+    };
 
 const fontClassName = montserrat.className;
 

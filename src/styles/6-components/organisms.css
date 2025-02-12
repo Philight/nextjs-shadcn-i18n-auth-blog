@@ -5,12 +5,12 @@
 
 .hero__c {
   @apply page-max-w;
-  @apply relative top-0 left-0 fill-parent desk-sm:min-h-[400px] f-col;
+  @apply relative top-0 left-0 fill-parent desk-sm:min-h-[360px] f-col;
   h1 {
     @apply mt-[calc(var(--announcement-height)+var(--header-height)+24px)] mb-[var(--gutter-outer-x)];
     @apply text-3xl desk-sm:text-4xl font-bold line-clamp-3;
     @apply text-white;
-    @apply animate-in slide-in-from-left-1/3 fade-in-50 duration-500;
+    @apply animate-in slide-in-from-left-10 fade-in-20 duration-500;
   }
   .LazyLoadImage__c {
     @apply -z-10 abs-fill-parent;
@@ -19,7 +19,7 @@
     }
   }
   .search-bar__c {
-    @apply max-w-[400px] mt-12;
+    @apply max-w-[400px] mb-8;
   }
 }
 
@@ -29,6 +29,7 @@
 
   h2 {
     @apply text-3xl desk-sm:text-[36px] font-bold;
+    @apply animate-in slide-in-from-bottom-10 fade-in-5  duration-500;
   }
   .blog-list__grid {
     --grid-gap: theme(space.6); /* gap-2 */
@@ -117,7 +118,8 @@ article.blog-list-item__c {
   @apply p-0 f-col h-full;
   /*  @apply border-none shadow-none bg-transparent;*/
   @apply shadow-lg rounded-none;
-  @apply animate-in slide-in-from-bottom-1/3 fade-in-30 ease-out duration-500;
+  /*  @apply animate-in slide-in-from-bottom-1/4 fade-in-20  ease-in duration-300;*/
+  @apply animate-in slide-in-from-bottom-1/5 fade-in-10  ease-out duration-500;
 
   &:hover {
     @apply -translate-x-0.5 -translate-y-1 opacity-70 shadow-[10px_14px_2px_0px_hsl(var(--foreground))]  ease-in-out duration-300;
@@ -262,6 +264,7 @@ article.blog-list-item__c {
 .form__c {
   @apply page-max-w;
   @apply max-w-[400px] w-full mt-[calc(var(--header-height)+24vh)] mb-[24vh];
+  @apply animate-in slide-in-from-bottom-10 fade-in-20 ease-out duration-500;
 
   &.create-post {
     @apply m-0 p-0 max-w-[600px];
@@ -309,16 +312,31 @@ article.blog-list-item__c {
         @apply border-0 border-b border-primary border-solid;
       }
     }
-    .profile-view__tabs-content {
-      @apply max-w-[400px] w-full f-center-x;
-      &.my-posts {
-        @apply max-w-full;
-        .blog-list__c {
-          @apply p-0;
+    .profile-view__tabs-content__container {
+      @apply f-center w-full;
+      .profile-view__tabs-content {
+        @apply max-w-[400px] f-center-x;
+        &[data-state='active'] {
+          @apply w-full;
         }
-      }
-      .no-blog-posts__c {
-        @apply max-w-[400px] w-full;
+        &.my-posts {
+          @apply max-w-full;
+          .blog-list__c {
+            @apply p-0;
+          }
+        }
+
+        > .user-card__c {
+          @apply p-8 pt-10 shadow-lg rounded;
+        }
+
+        > .user-card__c,
+        > .form__c.create-post {
+          @apply animate-in slide-in-from-bottom-4 fade-in-5  duration-500;
+        }
+        .no-blog-posts__c {
+          @apply max-w-[400px] w-full;
+        }
       }
     }
   }

@@ -51,7 +51,7 @@ export default function SearchBar({ className, data, ...props }: ISearchBarProps
   return (
     <Element name="search-bar">
       <Command className={cn('search-bar__c ', className)} {...props}>
-        <CommandInput placeholder="Type title or text..." onValueChange={handleValueChange} />
+        <CommandInput placeholder="Type a title or text..." onValueChange={handleValueChange} />
         {data?.length && (
           <CommandList>
             {open &&

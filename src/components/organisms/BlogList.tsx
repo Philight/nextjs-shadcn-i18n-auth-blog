@@ -10,10 +10,32 @@ import BlogListItem from '@/components/molecules/BlogListItem';
 import Heading from '@/components/atoms/Heading';
 
 import { useGlobalStore } from '@/store';
+import useDeviceDimensions, { type TDeviceType } from '@/hooks/useDeviceDimensions';
 import { cn } from '@/utils/functions';
 import { PostResponse } from '@/api/__generated/index.schemas';
 import type { IGenericProps } from '@/types/generic-types';
 // import { PAGINATIOIN_LIMIT } from '@/utils/constants';
+
+// ============================================================================
+
+const getGridDimensions = (DEVICE_TYPE: TDeviceType): { rows: number; cols: number } => {
+  switch (DEVICE_TYPE) {
+    case 'MOBILE_SM':
+    case 'MOBILE_LG':
+      return { rows: 1, cols: 1 }; // until this bp
+    case 'TABLET_SM':
+    case 'TABLET_MD':
+    case 'TABLET_LG':
+      return { rows: 1, cols: 2 }; // until this bp
+    case 'DESKTOP_SM':
+    case 'DESKTOP_MD':
+    case 'DESKTOP_LG':
+    case 'DESKTOP_XL':
+      return { rows: 1, cols: 3 }; // until this bp
+    default:
+      return { rows: 1, cols: 1 };
+  }
+};
 
 // ============================================================================
 
@@ -24,6 +46,9 @@ export interface BlogListProps extends IGenericProps {
 
 export default function BlogList({ posts, className, title }: BlogListProps) {
   const t = useTranslations();
+  const { DEVICE_TYPE } = useDeviceDimensions();
+  const columns = getGridDimensions(DEVICE_TYPE).cols;
+
   const { filters = { title: '' } } = useGlobalStore((state) => state);
 
   const filtered = useMemo(
@@ -51,7 +76,7 @@ export default function BlogList({ posts, className, title }: BlogListProps) {
   return (
     <section className={cn('blog-list__c', className)}>
       <Heading tag="h2">{title ?? t('blog.blog_title')}</Heading>
-      <div className={cn('blog-list__grid masonry-grid cols-3')}>
+      <div className={cn('blog-list__grid masonry-grid', `cols-${columns}`)}>
         {filtered.map(
           (post: PostResponse, index: number) =>
             post?.published && (

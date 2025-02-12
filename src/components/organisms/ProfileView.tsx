@@ -61,17 +61,19 @@ export default function ProfileView({ className }: Props) {
           ))}
         </TabsList>
 
-        <TabsContent value="profile" className="profile-view__tabs-content profile">
-          <UserCard className="" />
-        </TabsContent>
+        <div className="profile-view__tabs-content__container">
+          <TabsContent value="profile" className="profile-view__tabs-content profile">
+            <UserCard className="" />
+          </TabsContent>
 
-        <TabsContent value="my-posts" className="profile-view__tabs-content my-posts">
-          <BlogList className="" posts={userPosts} title={t('author.blog_title')} />
-        </TabsContent>
+          <TabsContent value="my-posts" className="profile-view__tabs-content my-posts">
+            <BlogList className="" posts={userPosts} title={t('author.blog_title')} />
+          </TabsContent>
 
-        <TabsContent value="create-post" className="profile-view__tabs-content create-post">
-          <CreatePostForm className="" />
-        </TabsContent>
+          <TabsContent value="create-post" className="profile-view__tabs-content create-post">
+            <CreatePostForm className="" />
+          </TabsContent>
+        </div>
       </Tabs>
     </section>
   );
