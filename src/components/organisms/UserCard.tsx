@@ -1,6 +1,8 @@
 'use client';
 
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/shadcn/card';
+import {
+  Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle 
+} from '@/shadcn/card';
 import { Button } from '@/shadcn/button';
 import { Input } from '@/shadcn/input';
 import { Label } from '@/shadcn/label';

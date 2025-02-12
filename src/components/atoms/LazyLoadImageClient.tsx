@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, {
+  useState, useEffect 
+} from 'react';
 
 import Image, { ImageProps } from 'next/image';
 import { generateBlurDataURL } from '@/utils/server/functions/images';

@@ -3,7 +3,9 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { useState, useEffect } from 'react';
+import {
+  useState, useEffect 
+} from 'react';
 
 import { getAuthorPosts } from '@/utils/server/actions/posts';
 import type { PostResponse } from '@/utils/api/__generated/index.schemas';

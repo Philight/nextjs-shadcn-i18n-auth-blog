@@ -7,12 +7,20 @@ import { useTranslations } from 'next-intl';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 
-import { Card, CardContent, CardHeader, CardTitle } from '@/shadcn/card';
-import { Tooltip, TooltipContent, TooltipTrigger } from '@/shadcn/tooltip';
+import {
+  Card, CardContent, CardHeader, CardTitle 
+} from '@/shadcn/card';
+import {
+  Tooltip, TooltipContent, TooltipTrigger 
+} from '@/shadcn/tooltip';
 import LazyLoadImageClient from '@/atoms/LazyLoadImageClient';
 import { Separator } from '@/shadcn/separator';
-import { Avatar, AvatarFallback, AvatarImage } from '@/shadcn/avatar';
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from '@/shadcn/dropdown-menu';
+import {
+  Avatar, AvatarFallback, AvatarImage 
+} from '@/shadcn/avatar';
+import {
+  DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger 
+} from '@/shadcn/dropdown-menu';
 
 import { Notebook } from 'lucide-react';
 

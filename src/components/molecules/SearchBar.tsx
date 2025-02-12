@@ -1,11 +1,17 @@
 'use client';
 
 import { Element } from 'react-scroll';
-import { useState, useMemo } from 'react';
-import { Command, CommandInput, CommandItem, CommandList } from '@/shadcn/command';
+import {
+  useState, useMemo 
+} from 'react';
+import {
+  Command, CommandInput, CommandItem, CommandList 
+} from '@/shadcn/command';
 
 import { useGlobalStore } from '@/store';
-import { cn, debounce } from '@/utils/functions';
+import {
+  cn, debounce 
+} from '@/utils/functions';
 import type { IGenericProps } from '@/types/generic-types';
 
 // ============================================================================

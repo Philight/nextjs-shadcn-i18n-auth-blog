@@ -23,3 +23,6 @@ src/setupTests.ts
 
 postcss.config.js
 postcss.config.cjs
+
+# orval
+src/utils/api/__generated

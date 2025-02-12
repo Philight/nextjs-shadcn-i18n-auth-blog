@@ -3,9 +3,13 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { useState, useEffect } from 'react';
+import {
+  useState, useEffect 
+} from 'react';
 
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/shadcn/tabs';
+import {
+  Tabs, TabsContent, TabsList, TabsTrigger 
+} from '@/shadcn/tabs';
 import CreatePostForm from '@/organisms/CreatePostForm';
 import UserCard from '@/organisms/UserCard';
 import BlogList from '@/organisms/BlogList';

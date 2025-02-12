@@ -12,7 +12,9 @@ import { z } from 'zod';
 
 import { Card } from '@/shadcn/card';
 import { Button } from '@/shadcn/button';
-import FormProvider, { Field, useForm } from '@/molecules/hook-form';
+import FormProvider, {
+  Field, useForm 
+} from '@/molecules/hook-form';
 import Container from '@/layouts/Container';
 import { Loader2 } from 'lucide-react';
 
@@ -22,7 +24,9 @@ import { Auth } from '@/api/__generated/index.schemas';
 import { routes } from 'src/navigation';
 import { cn } from '@/utils/functions';
 import { showToast } from '@/utils/helpers';
-import { IS_DEVELOPMENT, TOKEN_COOKIE_NAME } from '@/utils/constants';
+import {
+  IS_DEVELOPMENT, TOKEN_COOKIE_NAME 
+} from '@/utils/constants';
 
 import type { IGenericProps } from '@/types/generic-types';
 

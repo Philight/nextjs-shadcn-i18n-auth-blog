@@ -3,7 +3,9 @@
 import { useTranslations } from 'next-intl';
 import { useMemo } from 'react';
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../shadcn/card';
+import {
+  Card, CardContent, CardDescription, CardHeader, CardTitle 
+} from '../shadcn/card';
 import BlogListItem from '@/components/molecules/BlogListItem';
 import Heading from '@/components/atoms/Heading';
 

@@ -1,6 +1,8 @@
 import { useTranslations } from 'next-intl';
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/shadcn/card';
+import {
+  Card, CardContent, CardDescription, CardHeader, CardTitle 
+} from '@/shadcn/card';
 import Heading from '@/atoms/Heading';
 import { Separator } from '@/shadcn/separator';
 import { cn } from '@/utils/functions';
