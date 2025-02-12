@@ -1,8 +1,6 @@
 import { createLocalizedPathnamesNavigation } from 'next-intl/navigation';
 
-import {
-  locales, pathnames, localePrefix 
-} from './config-global';
+import { locales, pathnames, localePrefix } from './config-global';
 
 export const { Link, getPathname, redirect, usePathname, useRouter } = createLocalizedPathnamesNavigation({
   locales,
@@ -44,7 +42,11 @@ export const routes = {
   },
 };
 
-type NavItem = { title: (_t: any) => string; href: string; description: string };
+type NavItem = {
+  title: (_t: any) => string;
+  href: string;
+  description: (_t: any) => string;
+};
 
 export const navigation: { [key: string]: NavItem[] } = {
   home: [

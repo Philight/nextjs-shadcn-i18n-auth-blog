@@ -1,6 +1,4 @@
-import React, {
-  useState, useEffect 
-} from 'react';
+import React, { useState, useEffect } from 'react';
 
 import Image, { ImageProps } from 'next/image';
 import { generateBlurDataURL } from '@/utils/server/functions/images';
@@ -15,10 +13,10 @@ const BASE64_PLACEHOLDER = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALA
 
 // ============================================================================
 
-export interface LazyLoadImagePropsType extends IGenericProps, ImageProps {
+export interface LazyLoadImagePropsType extends Omit<IGenericProps, 'style'>, ImageProps {
   src: string;
   alt: string;
-  blurDataURL: string;
+  blurDataURL?: string;
   width?: number;
   withOverlay?: boolean;
 }

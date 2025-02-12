@@ -3,15 +3,13 @@
 import { useTranslations } from 'next-intl';
 import { useMemo } from 'react';
 
-import {
-  Card, CardContent, CardDescription, CardHeader, CardTitle 
-} from '../shadcn/card';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../shadcn/card';
 import BlogListItem from '@/components/molecules/BlogListItem';
 import Heading from '@/components/atoms/Heading';
 
 import { useGlobalStore } from '@/store';
 import { cn } from '@/utils/functions';
-import { PostResponse } from '@/api/__generated/index.schemas.ts';
+import { PostResponse } from '@/api/__generated/index.schemas';
 import type { IGenericProps } from '@/types/generic-types';
 // import { PAGINATIOIN_LIMIT } from '@/utils/constants';
 

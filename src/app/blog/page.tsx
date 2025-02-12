@@ -12,8 +12,8 @@ import ServerError from '@/molecules/ServerError';
 // export const dynamic = 'force-dynamic';
 export const dynamic = 'force-static';
 
-// invalidate every hour
-export const revalidate = 60 * 60;
+// invalidate every hour 60 * 60;
+export const revalidate = 3600;
 
 // ===============================================================
 

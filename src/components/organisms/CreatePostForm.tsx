@@ -10,15 +10,13 @@ import { z } from 'zod';
 
 import { Card } from '@/shadcn/card';
 import { Button } from '@/shadcn/button';
-import FormProvider, {
-  Field, useForm 
-} from '@/molecules/hook-form';
+import FormProvider, { Field, useForm } from '@/molecules/hook-form';
 
 import Container from '@/layouts/Container';
 
 // import { createPost } from '@/api/__generated/posts/posts';
 import { createNewPost } from '@/utils/server/actions/posts';
-import { PostResponce } from '@/api/__generated/index.schemas.ts';
+import { PostResponce } from '@/api/__generated/index.schemas';
 
 import { cn } from '@/utils/functions';
 import { showToast } from '@/utils/helpers';
@@ -35,7 +33,6 @@ export interface Props extends IGenericProps {}
 export default function CreatePostForm({ className }: Props) {
   const t = useTranslations('create_post');
   const [isPending, startTransition] = useTransition();
-  // const { setUser, setTokens } = useStore();
 
   const methods = useForm<z.infer<typeof createPostSchema>>({
     resolver: zodResolver(createPostSchema),
@@ -68,14 +65,12 @@ export default function CreatePostForm({ className }: Props) {
 
         const { title, content } = data;
 
-        const response: ResponseType = await createNewPost({
+        const response: ResponseType | any = await createNewPost({
           title,
           content,
         });
 
-        console.log('CreatePostForm response', response);
-
-        const { user, error, message, statusCode: status, ...tokens } = response;
+        const { error, message, statusCode: status } = response;
 
         // SERVER VALIDATIONS
         if (error) {

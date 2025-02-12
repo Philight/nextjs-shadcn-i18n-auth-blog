@@ -1,8 +1,6 @@
 'use client';
 
-import {
-  Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle 
-} from '@/shadcn/card';
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/shadcn/card';
 import { Button } from '@/shadcn/button';
 import { Input } from '@/shadcn/input';
 import { Label } from '@/shadcn/label';
@@ -14,9 +12,7 @@ import { useTranslations } from 'next-intl';
 
 // ============================================================================
 
-export interface Props extends IGenericProps {
-  title: string;
-}
+export interface Props extends IGenericProps {}
 
 export default function UserCard({ className }: Props) {
   const t = useTranslations('');

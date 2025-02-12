@@ -4,9 +4,12 @@
 import { ZodError } from 'zod';
 
 import { signIn } from '@/api/__generated/auth/auth';
+import type { Auth } from '@/api/__generated/index.schemas';
 import { saveToken } from '@/utils/server/functions/auth';
 
 // =================================================================
+
+type ResponseType = Auth;
 
 export async function signInAndSave(params: any, options?: any) {
   try {

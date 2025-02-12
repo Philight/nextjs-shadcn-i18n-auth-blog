@@ -3,6 +3,7 @@ import Axios, { type AxiosRequestConfig } from 'axios';
 // import auth from '@firebase/auth';
 // import qs from 'qs';
 
+// @ts-ignore
 export const AXIOS_INSTANCE = Axios.create({ baseURL: process.env.BASE_API_URL });
 
 // Make sure this function receives 2 arguments.
@@ -10,6 +11,7 @@ export const AXIOS_INSTANCE = Axios.create({ baseURL: process.env.BASE_API_URL }
 export const customInstance = async <T>(config: AxiosRequestConfig, options?: AxiosRequestConfig): Promise<T> => {
   // const token = await auth.getAuth().currentUser?.getIdToken();
 
+  // @ts-ignore
   const promise = AXIOS_INSTANCE({
     ...config,
     ...options,

@@ -12,21 +12,17 @@ import { z } from 'zod';
 
 import { Card } from '@/shadcn/card';
 import { Button } from '@/shadcn/button';
-import FormProvider, {
-  Field, useForm 
-} from '@/molecules/hook-form';
+import FormProvider, { Field, useForm } from '@/molecules/hook-form';
 import Container from '@/layouts/Container';
 import { Loader2 } from 'lucide-react';
 
 import { signUp } from '@/api/__generated/auth/auth';
-import { Auth } from '@/api/__generated/index.schemas.ts';
+import { Auth } from '@/api/__generated/index.schemas';
 
 import { routes } from 'src/navigation';
 import { cn } from '@/utils/functions';
 import { showToast } from '@/utils/helpers';
-import {
-  IS_DEVELOPMENT, TOKEN_COOKIE_NAME 
-} from '@/utils/constants';
+import { IS_DEVELOPMENT, TOKEN_COOKIE_NAME } from '@/utils/constants';
 
 import type { IGenericProps } from '@/types/generic-types';
 
@@ -75,7 +71,7 @@ export default function SignUpForm({ className }: Props) {
 
         const { email, firstname, lastname, password } = data;
 
-        const response: ResponseType = (
+        const response: ResponseType | any = (
           await signUp({
             email,
             firstname,
@@ -84,7 +80,7 @@ export default function SignUpForm({ className }: Props) {
           })
         ).data;
 
-        const { user, error, message, statusCode: status, ...tokens } = response;
+        const { error, message, statusCode: status, ...tokens } = response;
 
         // SERVER VALIDATIONS
         if (error) {

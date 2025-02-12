@@ -3,13 +3,9 @@
 import React from 'react';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
-import {
-  usePathname, useRouter 
-} from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { v4 as uuidv4 } from 'uuid';
-import {
-  Link as ScrollLink, scroller 
-} from 'react-scroll';
+import { Link as ScrollLink, scroller } from 'react-scroll';
 
 import Icon from '@/atoms/Icon';
 import FloatingMenu from '@/organisms/FloatingMenu';
@@ -23,23 +19,17 @@ import {
   NavigationMenuLink,
 } from '@/shadcn/navigation-menu';
 import { Button } from '@/shadcn/button';
-import {
-  Avatar, AvatarFallback, AvatarImage 
-} from '@/shadcn/avatar';
+import { Avatar, AvatarFallback, AvatarImage } from '@/shadcn/avatar';
 
 import { useGlobalStore } from '@/store';
 import { useOffSetTop } from '@/hooks/useOffSetTop';
 
 import { ICONS_SIZES } from '@/utils/constants';
-import {
-  routes, navigation 
-} from 'src/navigation';
+import { routes, navigation } from 'src/navigation';
 import { cn } from '@/utils/functions';
 import type { IGenericProps } from '@/types/generic-types';
 
-import {
-  List, Search 
-} from 'lucide-react';
+import { List, Search } from 'lucide-react';
 import { montserrat } from 'public/fonts/montserrat';
 
 // ================================================================
@@ -51,7 +41,7 @@ const durationFn = function (deltaTop): number {
   return deltaTop;
 };
 
-const scrollToElement = ({ element = null, duration = 1000, delay = 0, smooth = 'easeInOutQuart', offset = 0 }) => {
+const scrollToElement = ({ element = null, duration = 1000, delay = 0, smooth = 'easeInOutQuart', offset = 0 }: any) => {
   if (typeof document === 'undefined') {
     return;
   }
@@ -187,6 +177,7 @@ function BurgerMenu({ className }: BurgerMenuProps) {
           <NavigationMenuContent className="navigation__menu">
             <ul className="grid w-[200px] gap-3 p-4  ">
               {navigation
+                // @ts-ignore
                 .values()
                 .flat()
                 .map((item: any) => (

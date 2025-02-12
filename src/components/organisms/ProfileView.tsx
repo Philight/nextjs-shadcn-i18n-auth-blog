@@ -3,13 +3,9 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import {
-  useState, useEffect 
-} from 'react';
+import { useState, useEffect } from 'react';
 
-import {
-  Tabs, TabsContent, TabsList, TabsTrigger 
-} from '@/shadcn/tabs';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/shadcn/tabs';
 import CreatePostForm from '@/organisms/CreatePostForm';
 import UserCard from '@/organisms/UserCard';
 import BlogList from '@/organisms/BlogList';
@@ -31,28 +27,18 @@ const TABS = [
 
 // ============================================================================
 
-export interface Props extends IGenericProps {
-  title: string;
-  imageProps: {
-    src: string;
-    alt: string;
-    blurDataUrl: string;
-    fill?: any;
-  };
-  showSearch?: boolean;
-}
+export interface Props extends IGenericProps {}
 
-export default function ProfileView({ title, className, imageProps }: Props) {
+export default function ProfileView({ className }: Props) {
   const t = useTranslations();
   const { user } = useGlobalStore((state) => state);
-  const [userPosts, setPosts] = useState([]);
+  const [userPosts, setPosts] = useState<PostResponse[]>([]);
 
   // Client Fetch
   useEffect(() => {
     const fetchPosts = async () => {
       if (user) {
-        const posts: PostResponse[] = await getAuthorPosts(user.id);
-        console.log('ProfileView getAuthorPosts', posts);
+        const posts: PostResponse[] | any = await getAuthorPosts(user.id);
         setPosts(posts ?? []);
       }
     };

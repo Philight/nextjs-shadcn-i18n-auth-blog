@@ -1,8 +1,6 @@
 import { useTranslations } from 'next-intl';
 
-import {
-  Card, CardContent, CardDescription, CardHeader, CardTitle 
-} from '@/shadcn/card';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/shadcn/card';
 import Heading from '@/atoms/Heading';
 import { Separator } from '@/shadcn/separator';
 import { cn } from '@/utils/functions';
@@ -14,7 +12,9 @@ import type { IGenericProps } from '@/types/generic-types';
 
 // ============================================================================
 
-export interface BlogPostProps extends IGenericProps, PostResponse {}
+export interface BlogPostProps extends IGenericProps, PostResponse {
+  author?: any;
+}
 
 export default function BlogPost({ className, content, author = 'Author', authorId, title, updatedAt, createdAt }: BlogPostProps) {
   const t = useTranslations();
@@ -44,6 +44,7 @@ export default function BlogPost({ className, content, author = 'Author', author
         <Separator className="divider top" orientation="horizontal" />
         <Heading tag="h2">{author}</Heading>
         <Separator className="divider bottom" orientation="horizontal" />
+        {/* @ts-ignore */}
         <time pubdate="pubdate" dateTime="2011-08-28" title="August 28th, 2011">
           {fDate(new Date(updatedAt || createdAt))}
         </time>

@@ -4,12 +4,8 @@ import { revalidateTag } from 'next/cache';
 import { ZodError } from 'zod';
 
 import { getToken } from '@/utils/server/functions/auth';
-import {
-  getUserPosts, createPost 
-} from '@/api/__generated/posts/posts';
-import type {
-  PostResponse, PostResponce 
-} from '@/api/__generated/index.schemas';
+import { getUserPosts, createPost } from '@/api/__generated/posts/posts';
+import type { PostResponse, PostResponce } from '@/api/__generated/index.schemas';
 
 // =================================================================
 
@@ -17,9 +13,9 @@ import type {
  * getAuthorPosts()
  * @description Basic Authorization fetch
  */
-export async function getAuthorPosts(authorId: any, options: any) {
+export async function getAuthorPosts(authorId: any, options?: any) {
   try {
-    const token = JSON.parse(await getToken()).accessToken;
+    const token = await JSON.parse((await getToken()) ?? '{}')?.accessToken;
 
     const posts: PostResponse[] = (
       await getUserPosts(String(authorId), {
@@ -50,9 +46,9 @@ export async function getAuthorPosts(authorId: any, options: any) {
  */
 export async function createNewPost(params: any, options?: any) {
   try {
-    const token = JSON.parse(await getToken()).accessToken;
+    const token = await JSON.parse((await getToken()) ?? '{}')?.accessToken;
 
-    const response: PostResponce = (
+    const response: PostResponce | any = (
       await createPost(params, {
         headers: { Authorization: `Bearer ${token}` },
         ...options,

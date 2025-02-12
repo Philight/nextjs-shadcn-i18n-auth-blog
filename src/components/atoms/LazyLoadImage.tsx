@@ -1,5 +1,3 @@
-// import React, { useState, useEffect } from 'react';
-
 import Image, { ImageProps } from 'next/image';
 import { generateBlurDataURL } from '@/utils/server/functions/images';
 
@@ -9,25 +7,16 @@ import { cn } from '@/utils/functions';
 
 // ============================================================================
 
-export interface LazyLoadImagePropsType extends IGenericProps, ImageProps {
+export interface LazyLoadImagePropsType extends Omit<IGenericProps, 'style'>, ImageProps {
   src: string;
   alt: string;
-  blurDataURL: string;
+  blurDataURL?: string;
   width?: number;
   withOverlay?: boolean;
 }
 
 // USE THIS ONLY ON SERVER SIDE COMPONENTS
 export default async function LazyLoadImageAsync({ className, src, alt, blurDataURL, withOverlay, ...rest }: LazyLoadImagePropsType) {
-  // const [base64, setBase64] = useState();
-
-  // useEffect(() => {
-  //   (async () => {
-  //     const _base64 = await generateBlurDataURL(src);
-  //     setBase64(_base64);
-  //   })();
-  // });
-
   const base64 = await generateBlurDataURL(src);
 
   return (

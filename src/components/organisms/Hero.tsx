@@ -12,7 +12,7 @@ export interface HeroPropsType extends IGenericProps {
   imageProps: {
     src: string;
     alt: string;
-    blurDataUrl: string;
+    blurDataUrl?: string;
     fill?: any;
   };
   showSearch?: boolean;

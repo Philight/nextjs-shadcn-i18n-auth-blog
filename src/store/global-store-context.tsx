@@ -1,13 +1,9 @@
 'use client';
 
-import {
-  type ReactNode, createContext, useRef, useContext 
-} from 'react';
+import { type ReactNode, createContext, useRef, useContext } from 'react';
 import { useStore } from 'zustand';
 
-import {
-  type GlobalStore, createGlobalStore 
-} from './global-store';
+import { type GlobalStore, createGlobalStore } from './global-store';
 
 export type GlobalStoreApi = ReturnType<typeof createGlobalStore>;
 
@@ -26,7 +22,9 @@ export function GlobalStoreProvider({ children }: GlobalStoreProviderProps) {
   return <GlobalStoreContext.Provider value={storeRef.current}>{children}</GlobalStoreContext.Provider>;
 }
 
-export const useGlobalStore = <T,>(selector: (store: GlobalStore) => T): T => {
+const defaultSelector = (state) => state;
+
+export const useGlobalStore = <T,>(selector: (store: GlobalStore) => T = defaultSelector): T => {
   const context = useContext(GlobalStoreContext);
 
   if (!context) {

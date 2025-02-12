@@ -27,7 +27,7 @@ export default async function Layout({ children, params }: { children: React.Rea
   } catch (e) {}
 
   if (!post) {
-    post = { title: t('title', { id }) };
+    post = { title: t('title', { id }) } as PostResponse;
   }
 
   return (

@@ -1,17 +1,11 @@
 'use client';
 
 import { Element } from 'react-scroll';
-import {
-  useState, useMemo 
-} from 'react';
-import {
-  Command, CommandInput, CommandItem, CommandList 
-} from '@/shadcn/command';
+import { useState, useMemo } from 'react';
+import { Command, CommandInput, CommandItem, CommandList } from '@/shadcn/command';
 
 import { useGlobalStore } from '@/store';
-import {
-  cn, debounce 
-} from '@/utils/functions';
+import { cn, debounce } from '@/utils/functions';
 import type { IGenericProps } from '@/types/generic-types';
 
 // ============================================================================
@@ -20,11 +14,12 @@ const DEBOUNCE_DELAY = 1500;
 
 // ============================================================================
 
-interface ICommandProps extends IGenericProps {
-  data: { value: string; label: string }[];
+interface ISearchBarProps extends IGenericProps {
+  data?: { value: string; label: string }[];
+  id?: any;
 }
 
-export default function SearchBar({ className, data, ...props }: ICommandProps) {
+export default function SearchBar({ className, data, ...props }: ISearchBarProps) {
   const [open, setOpen] = useState(false);
   const [inputValue, setInputValue] = useState('');
   const { setFilters, filters } = useGlobalStore((state) => state);

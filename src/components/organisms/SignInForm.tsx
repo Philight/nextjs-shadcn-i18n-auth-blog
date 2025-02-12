@@ -14,24 +14,18 @@ import { z } from 'zod';
 
 import { Card } from '@/shadcn/card';
 import { Button } from '@/shadcn/button';
-import FormProvider, {
-  Field, useForm 
-} from '@/molecules/hook-form';
+import FormProvider, { Field, useForm } from '@/molecules/hook-form';
 
 import Container from '@/layouts/Container';
 
 import { signIn } from '@/api/__generated/auth/auth';
 import type { Auth } from '@/api/__generated/index.schemas.ts';
-import {
-  type UserType, useGlobalStore 
-} from '@/store';
+import { type UserType, useGlobalStore, type GlobalStore } from '@/store';
 
 import { routes } from 'src/navigation';
 import { cn } from '@/utils/functions';
 import { showToast } from '@/utils/helpers';
-import {
-  IS_DEVELOPMENT, TOKEN_COOKIE_NAME 
-} from '@/utils/constants';
+import { IS_DEVELOPMENT, TOKEN_COOKIE_NAME } from '@/utils/constants';
 
 import type { IGenericProps } from '@/types/generic-types';
 import { Loader2 } from 'lucide-react';
@@ -48,7 +42,7 @@ export default function SignInForm({ className }: SignInFormProps) {
   const t = useTranslations('signin');
   const [isPending, startTransition] = useTransition();
   const { push } = useRouter();
-  const { setUser, setTokens } = useGlobalStore();
+  const { setUser, setTokens } = useGlobalStore<GlobalStore>();
 
   const methods = useForm<z.infer<typeof signInSchema>>({
     resolver: zodResolver(signInSchema),
@@ -81,14 +75,12 @@ export default function SignInForm({ className }: SignInFormProps) {
 
         const { email, password } = data;
 
-        const response: ResponseType = (
+        const response: ResponseType | any = (
           await signIn({
             email,
             password,
           })
         ).data;
-
-        console.log('SignInForm response', response);
 
         const { user, error, message, statusCode: status, ...tokens } = response;
 

@@ -3,9 +3,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import {
-  useState, useEffect 
-} from 'react';
+import { useState, useEffect } from 'react';
 
 import { getAuthorPosts } from '@/utils/server/actions/posts';
 import type { PostResponse } from '@/utils/api/__generated/index.schemas';
@@ -21,13 +19,13 @@ type Props = {
 
 export default function AuthorPosts({ id }: Props) {
   const t = useTranslations();
-  const [authorPosts, setPosts] = useState<PostResponse>([]);
+  const [authorPosts, setPosts] = useState<PostResponse[]>([]);
 
   // Client Fetch
   useEffect(() => {
     const fetchPosts = async () => {
       if (id) {
-        const posts: PostResponse[] = await getAuthorPosts(id);
+        const posts: PostResponse[] | any = await getAuthorPosts(id);
         setPosts(posts ?? []);
       }
     };
