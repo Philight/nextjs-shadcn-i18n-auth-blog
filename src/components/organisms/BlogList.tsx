@@ -47,7 +47,7 @@ export interface BlogListProps extends IGenericProps {
 export default function BlogList({ posts, className, title }: BlogListProps) {
   const t = useTranslations();
   const { DEVICE_TYPE } = useDeviceDimensions();
-  const columns = getGridDimensions(DEVICE_TYPE).cols;
+  const columns = getGridDimensions(DEVICE_TYPE as TDeviceType).cols;
 
   const { filters = { title: '' } } = useGlobalStore((state) => state);
 

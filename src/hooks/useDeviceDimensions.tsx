@@ -2,16 +2,17 @@ import {
   useState, useEffect 
 } from 'react';
 
+const IS_SERVER = typeof window === 'undefined';
+
 export type TDeviceType = 'MOBILE_SM' | 'MOBILE_LG' | 'TABLET_SM' | 'TABLET_MD' | 'TABLET_LG' | 'DESKTOP_SM' | 'DESKTOP_MD' | 'DESKTOP_LG' | 'DESKTOP_XL';
 
 export interface IDeviceDimensions {
   DEVICE_WIDTH: number;
   DEVICE_HEIGHT: number;
-  DEVICE_TYPE: string;
+  DEVICE_TYPE: string | TDeviceType;
   DEVICE_IS_TOUCH: boolean;
 }
 
- 
 const BREAKPOINTS: { [key in TDeviceType]: number } = {
   DESKTOP_XL: 1920,
   DESKTOP_LG: 1440,
@@ -38,7 +39,15 @@ const isTouchDevice = (): boolean => {
   return 'ontouchstart' in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
 };
 
+const initialValue: IDeviceDimensions = {
+  DEVICE_WIDTH: 0,
+  DEVICE_HEIGHT: 0,
+  DEVICE_TYPE: 'MOBILE_SM',
+  DEVICE_IS_TOUCH: false,
+};
+
 function getWindowDimensions() {
+  if (IS_SERVER) return initialValue;
   const { innerWidth: DEVICE_WIDTH, innerHeight: DEVICE_HEIGHT } = window;
   return {
     DEVICE_WIDTH,
@@ -52,6 +61,8 @@ export default function useDeviceDimensions(): IDeviceDimensions {
   const [windowDimensions, setWindowDimensions] = useState<IDeviceDimensions>(getWindowDimensions());
 
   useEffect(() => {
+    if (IS_SERVER) return undefined;
+
     const handleResize = (): void => {
       setWindowDimensions(getWindowDimensions());
     };
