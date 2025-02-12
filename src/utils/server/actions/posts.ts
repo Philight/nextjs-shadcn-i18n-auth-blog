@@ -1,15 +1,14 @@
 'use server';
 
+import { redirect } from 'next/navigation';
 import { revalidateTag } from 'next/cache';
 import { ZodError } from 'zod';
 
 import { getToken } from '@/utils/server/functions/auth';
-import {
-  getUserPosts, createPost 
-} from '@/api/__generated/posts/posts';
-import type {
-  PostResponse, PostResponce 
-} from '@/api/__generated/index.schemas';
+import { getUserPosts, createPost } from '@/api/__generated/posts/posts';
+import type { PostResponse, PostResponce } from '@/api/__generated/index.schemas';
+
+import { routes } from 'src/navigation';
 
 // =================================================================
 
@@ -28,12 +27,16 @@ export async function getAuthorPosts(authorId: any, options?: any) {
           Authorization: `Bearer ${token}`,
         },
         next: { tags: [`getUserPosts-${authorId}`] },
+        credentials: 'include',
         // cache: 'no-store',
         ...options,
       })
     ).data;
 
-    return posts;
+    // Authorized, send data
+    if (posts?.statusCode !== 401) {
+      return posts;
+    }
   } catch (error) {
     console.error(error);
     if (error instanceof ZodError) {
@@ -42,6 +45,9 @@ export async function getAuthorPosts(authorId: any, options?: any) {
 
     return { status: 500, message: 'Server Error', timestamp: Date.now() };
   }
+
+  // 401 - redirect to Login
+  redirect(routes.auth.signin);
 }
 
 /**

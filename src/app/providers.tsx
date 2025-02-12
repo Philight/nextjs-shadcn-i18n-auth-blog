@@ -5,6 +5,7 @@ import { ReactNode } from 'react';
 // import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 import { ThemeProvider } from '@/context/ThemeProvider';
+import { AuthProvider } from '@/context/AuthProvider';
 import { GlobalStoreProvider } from '@/store';
 
 import { Toaster } from '@/shadcn/sonner';
@@ -21,21 +22,21 @@ export default function Providers({ children }: { children: ReactNode }) {
 
   return (
     <GlobalStoreProvider>
-      {/*<AuthProvider>*/}
-      {/*<QueryClientProvider client={queryClient}>*/}
-      <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-        <TooltipProvider>
-          <MotionLazy>
-            <Toaster />
-            <ProgressBar />
-            {children}
-          </MotionLazy>
-        </TooltipProvider>
-      </ThemeProvider>
-      {/* By default, React Query Devtools are only included in bundles when process. env. NODE_ENV === 'development', */}
-      {/*<ReactQueryDevtools initialIsOpen={false} />*/}
-      {/*</QueryClientProvider>*/}
-      {/*</AuthProvider>*/}
+      <AuthProvider>
+        {/*<QueryClientProvider client={queryClient}>*/}
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+          <TooltipProvider>
+            <MotionLazy>
+              <Toaster />
+              <ProgressBar />
+              {children}
+            </MotionLazy>
+          </TooltipProvider>
+        </ThemeProvider>
+        {/* By default, React Query Devtools are only included in bundles when process. env. NODE_ENV === 'development', */}
+        {/*<ReactQueryDevtools initialIsOpen={false} />*/}
+        {/*</QueryClientProvider>*/}
+      </AuthProvider>
     </GlobalStoreProvider>
   );
 }

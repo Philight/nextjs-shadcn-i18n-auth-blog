@@ -1,13 +1,9 @@
 // import { headers } from 'next/headers';
 import axios from 'axios';
-import {
-  Options, serialize 
-} from 'object-to-formdata';
+import { Options, serialize } from 'object-to-formdata';
 
 import { twMerge } from 'tailwind-merge';
-import {
-  type ClassValue, clsx 
-} from 'clsx';
+import { type ClassValue, clsx } from 'clsx';
 
 export { cva } from 'class-variance-authority';
 
@@ -18,7 +14,8 @@ import { IS_DEVELOPMENT } from './constants';
 const token = process.env.NEXT_PUBLIC_API_TOKEN;
 
 const DEFAULT_HEADERS = {
-  Accept: 'application/json, text/plain, */*',
+  // Accept: 'application/json, text/plain, */*',
+  Accept: '*/*',
   'Content-Type': 'application/json',
   'Accept-Language':
     typeof navigator !== 'undefined' ? ((navigator.languages && navigator.languages.length ? navigator.languages[0] : navigator.language) ?? 'cs') : 'cs',
@@ -66,7 +63,7 @@ export async function fetchApi(urlOrPath: URL | string, options?: any) {
   }
 
   // Body
-  const transformedBody = await (contentType === 'multipart/form-data' ? serializeJsonToFormData({ token, ...body }) : JSON.stringify({ token, ...body }));
+  const transformedBody = await (contentType === 'multipart/form-data' ? serializeJsonToFormData({ ...body }) : body);
   const includeBody = method !== 'GET' ? { body: transformedBody } : {};
 
   const res = await fetch(targetUrl, {
@@ -77,7 +74,6 @@ export async function fetchApi(urlOrPath: URL | string, options?: any) {
       // ...(await headers()),
     },
     ...includeBody,
-    credentials: 'include',
     ...fetchOptions,
   });
 
